@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.movie{
+  width: 480px;
+  height: 270px;
+
+}
+
+.movie img{
+  width: 100%;
+}
