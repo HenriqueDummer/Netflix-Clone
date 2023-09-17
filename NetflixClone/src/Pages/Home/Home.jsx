@@ -5,7 +5,7 @@ import useFetchData from '../../Hooks/useFetchData'
 import Carousel from '../../Components/Carousel'
 
 const Home = () => {
-    const {data} = useFetchData(null, true, null)
+    const {data} = useFetchData(false, true, 'On The Air', null)
 
     console.log(data)
   return (

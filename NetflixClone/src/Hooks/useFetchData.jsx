@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetchData = (movie, series, genre ) => {
+const useFetchData = (movie, series, status, genre ) => {
 
     const [data, setData] = useState()
 
@@ -17,24 +17,49 @@ const useFetchData = (movie, series, genre ) => {
       
       
       useEffect(() => {
-
+        
         if(movie){
             if(!genre){
-                query = "discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
+                switch(status){
+                    case 'Now Playing':
+                        query = 'movie/now_playing?language=en-US&page=1'
+                        break;
+                    case 'Popular':
+                        query = 'movie/popular?language=en-US&page=1'
+                        break;
+                    case 'Top Rated':
+                        query = 'movie/top_rated?language=en-US&page=1' 
+                        console.log("TopRAted")
+                        break;
+                    case 'Upcoming':
+                        query = 'movie/upcoming?language=en-US&page=1'
+                    default:
+                        query = 'discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
+                }
             }
             else{
                 console.log("genre")
-                query =`discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=16`
+                query =`discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genre}`
             }  
         }
 
         if(series){
-            if(!genre){
-                query = "tv/top_rated?language=en-US&page=1"
+            switch(status){
+                case 'Airing Today':
+                    query = 'tv/airing_today?language=en-US&page=1'
+                    break;
+                case 'On The Air':
+                    query = 'tv/on_the_air?language=en-US&page=1'
+                    break;
+                case 'Popular':
+                    query = 'tv/popular?language=en-US&page=1' 
+                    break;
+                case 'Top Rated':
+                    query = 'tv/top_rated?language=en-US&page=1'
+                default: 
+                    query = 'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'
+
             }
-            else{
-                query =`/tv/popular?language=en-US&page=1`
-            }  
         }
 
         fetch(`https://api.themoviedb.org/3/${query}`, options)
