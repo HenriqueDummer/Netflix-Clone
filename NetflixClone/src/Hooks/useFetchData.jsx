@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetchData = (movie, series, status, genre ) => {
+const useFetchData = (movie = null, series = null, status = null, genre = null, number = 20) => {
 
     const [data, setData] = useState()
 
@@ -14,8 +14,6 @@ const useFetchData = (movie, series, status, genre ) => {
 
       let query = ''
 
-      
-      
       useEffect(() => {
         
         if(movie){
@@ -35,6 +33,7 @@ const useFetchData = (movie, series, status, genre ) => {
                         query = 'movie/upcoming?language=en-US&page=1'
                     default:
                         query = 'discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
+                        break
                 }
             }
             else{
@@ -58,13 +57,13 @@ const useFetchData = (movie, series, status, genre ) => {
                     query = 'tv/top_rated?language=en-US&page=1'
                 default: 
                     query = 'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'
-
+                    break
             }
         }
 
         fetch(`https://api.themoviedb.org/3/${query}`, options)
           .then(response => response.json())
-          .then(response => setData(response.results))
+          .then(response => setData(response.results.slice(0, number)))
           .catch(err => console.error(err));
 
       }, [movie, series, genre])

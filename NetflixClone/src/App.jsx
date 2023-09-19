@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Route, BrowserRouter, Routes } from 'react-router-dom'
-import './App.css'
 
 // Pages
 import Home from './Pages/Home/Home'
@@ -16,7 +15,7 @@ function App() {
 
 
   return (
-    <>
+    <div className='app'>
       <BrowserRouter>
       <Navbar />
         <Routes>
@@ -25,7 +24,7 @@ function App() {
           <Route path='/series' element={<Series />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 
