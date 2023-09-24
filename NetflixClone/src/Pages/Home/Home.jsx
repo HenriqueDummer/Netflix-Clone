@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import useFetchData from '../../Hooks/useFetchData'
 
@@ -87,8 +87,26 @@ const Home = () => {
   ]
 
   const [headerPosition, setHeaderPosition] = useState(0)
+  const [moviesOnCarousel, setMoviesOnCarousel] = useState(Math.round(((window.innerWidth - 85) / 4) / 100))
 
-  console.log(headerPosition)
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setMoviesOnCarousel(Math.floor(((window.innerWidth - 85) / 4) / 100));
+    };
+  
+    window.addEventListener('resize', handleResize);
+    
+    // Call handleResize once to initialize the value
+    handleResize();
+  
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+    
+  
+
   return (
     <div className='home'>
       <div className="header_container">
@@ -109,7 +127,7 @@ const Home = () => {
         <div className="header_wrapper" style={{transform: `translateX(${headerPosition}%)`}}>
           {header_data && header_data.map((movie) => {
             return(
-              <div className="header_movie" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`}}>
+              <div key={movie.id} className="header_movie" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`}}>
                 <div className="header_filter1"></div>
                 <div className="header_filter2"></div>
                 <div className="header_movie_infos">
@@ -139,11 +157,11 @@ const Home = () => {
       <div className="carousel_container">
         <div className="carousel">
           <h3>Discover</h3>
-          <Carousel data = {useFetchData(true)}  />
+          <Carousel data = {useFetchData(true)} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
         <div className="carousel">
-          <h3>Discover</h3>
-          <Carousel data = {useFetchData(true)}  />
+          <h3>Top Rated</h3>
+          <Carousel data = {useFetchData(true, false, "Top Rated")} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
       </div>
       <div className="footer">
