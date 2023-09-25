@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Carousel = (props) => {
 
@@ -33,19 +34,19 @@ const Carousel = (props) => {
       }
     }
 
-    
+    console.log(data)
    return(
       <div className="carousel_wrapper" id='carousel_wrapper'>
-        <div className="carousel_controls">
-          <button onClick={() => moveCarouselLeft()}><i className='bi bi-arrow-left-short'></i></button>
-          <button onClick={() => moveCarouselRight()}><i className='bi bi-arrow-right-short'></i></button>
-        </div>
+        <button id='move_left' onClick={() => moveCarouselLeft()}><i className='bi bi-arrow-left-short'></i></button>
+        <button id='move_right' onClick={() => moveCarouselRight()}><i className='bi bi-arrow-right-short'></i></button>
         <div className="movies" style={{transform: `translateX(${carouselPosition}px)`}}>
           {data && data.map((movie) => {
               return(
-                <div key={movie.id} className="movie">
-                    <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="" />
-                </div>
+                <Link to={`about/${movie.id}`}>
+                  <div key={movie.id} className="movie">
+                      <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="" />
+                  </div>
+                </Link>
               )  
             })}
         </div>

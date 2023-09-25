@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import useFetchData from '../../Hooks/useFetchData'
 
@@ -96,8 +97,7 @@ const Home = () => {
     };
   
     window.addEventListener('resize', handleResize);
-    
-    // Call handleResize once to initialize the value
+  
     handleResize();
   
     return () => {
@@ -105,24 +105,22 @@ const Home = () => {
     };
   }, []);
     
-  
-
   return (
     <div className='home'>
       <div className="header_container">
           <div className="header_controls">
-                <input type="radio" name='slide' id='slide1' value={0} onChange={(e) => setHeaderPosition(e.target.value)}/>
-                <input type="radio" name='slide' id='slide2' value={-100} onChange={(e) => setHeaderPosition(e.target.value)}/>
-                <input type="radio" name='slide' id='slide3' value={-200} onChange={(e) => setHeaderPosition(e.target.value)}/>
-                <input type="radio" name='slide' id='slide4' value={-300} onChange={(e) => setHeaderPosition(e.target.value)}/>
-                <input type="radio" name='slide' id='slide5' value={-400} onChange={(e) => setHeaderPosition(e.target.value)}/>
+              <input type="radio" name='slide' id='slide1' value={0} onChange={(e) => setHeaderPosition(e.target.value)}/>
+              <input type="radio" name='slide' id='slide2' value={-100} onChange={(e) => setHeaderPosition(e.target.value)}/>
+              <input type="radio" name='slide' id='slide3' value={-200} onChange={(e) => setHeaderPosition(e.target.value)}/>
+              <input type="radio" name='slide' id='slide4' value={-300} onChange={(e) => setHeaderPosition(e.target.value)}/>
+              <input type="radio" name='slide' id='slide5' value={-400} onChange={(e) => setHeaderPosition(e.target.value)}/>
             </div>
             <div className="header_navigation">
-              <label htmlFor="slide1" className='nav_header' id='s1'></label>
+              <label htmlFor="slide1" className='nav_header' id='s1' ></label>
               <label htmlFor="slide2" className='nav_header' id='s2'></label>
-              <label htmlFor="slide3" className='nav_header'></label>
-              <label htmlFor="slide4" className='nav_header'></label>
-              <label htmlFor="slide5" className='nav_header'></label>
+              <label htmlFor="slide3" className='nav_header' id='s3'></label>
+              <label htmlFor="slide4" className='nav_header' id='s4'></label>
+              <label htmlFor="slide5" className='nav_header' id='s5'></label>
             </div>
         <div className="header_wrapper" style={{transform: `translateX(${headerPosition}%)`}}>
           {header_data && header_data.map((movie) => {
@@ -162,6 +160,14 @@ const Home = () => {
         <div className="carousel">
           <h3>Top Rated</h3>
           <Carousel data = {useFetchData(true, false, "Top Rated")} moviesOnCarousel = {moviesOnCarousel}  />
+        </div>
+        <div className="carousel">
+          <h3>Popular series</h3>
+          <Carousel data = {useFetchData(false, true, "Popular")} moviesOnCarousel = {moviesOnCarousel}  />
+        </div>
+        <div className="carousel">
+          <h3>Now Playing</h3>
+          <Carousel data = {useFetchData(true, false, "Now Playing")} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
       </div>
       <div className="footer">
