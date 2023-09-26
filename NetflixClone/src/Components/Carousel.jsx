@@ -24,7 +24,6 @@ const Carousel = (props) => {
       }
     }
 
-    console.log(carouselPosition)
 
     const moveCarouselLeft= (e) => {
       if(carouselPosition + (moviesOnCarousel * 400) < 0){
@@ -34,7 +33,9 @@ const Carousel = (props) => {
       }
     }
 
-    console.log(data)
+    console.log(`Max width => ${maxWidth}`)
+    console.log(`Carousel position => ${carouselPosition}`)
+    console.log(`On carousel => ${moviesOnCarousel}`)
    return(
       <div className="carousel_wrapper" id='carousel_wrapper'>
         <button id='move_left' onClick={() => moveCarouselLeft()}><i className='bi bi-arrow-left-short'></i></button>
@@ -45,6 +46,13 @@ const Carousel = (props) => {
                 <Link to={`about/${movie.id}`}>
                   <div key={movie.id} className="movie">
                       <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="" />
+                      <div className="movie_info">
+                        <p>{movie.original_title ? movie.original_title : movie.name}</p>
+                        <div className="circular_progress" style={{background:`conic-gradient(#535bf2 ${(movie.vote_average * 360) / 10}deg, transparent 0deg)`}}>
+                          <span>{movie.vote_average}</span>
+                        </div>
+
+                      </div>
                   </div>
                 </Link>
               )  

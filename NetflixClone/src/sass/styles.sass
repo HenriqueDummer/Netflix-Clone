@@ -222,32 +222,81 @@ body
                     height: 100%
                     background-color: rgba(0, 0, 0, 0.7)
                     border: none
+                    opacity: 0
+                    transition: 0.2s
     
                     i
                         font-size: 26px
                         transition: 0.4s ease
-
-                    button:hover
-                        cursor: pointer 
-                            
+                    
                     i
                         transform: scale(2)
 
+                #move_left:hover, #move_right:hover
+                    cursor: pointer 
+                    opacity: 1
+                            
                 .movie
-                    min-width: 390px
+                    height: 219.39px
                     border-radius: 20px
                     overflow: hidden
-                
+                    position: relative
+                   
                     img
-                        width: 100%
+                        
                         height: 100%
                         transition: 0.3s ease
 
+                    .movie_info
+                        position: absolute
+                        width: 100%
+                        bottom: -40px
+                        left: 0
+                        z-index: 2
+                        display: flex
+                        justify-content: space-between
+                        align-items: center
+                        padding-inline: 20px
+                        height: 40px
+                        background: rgb(9,1,37)
+                        background: linear-gradient(0deg, rgba(9,1,37,0.9051995798319328) 90%, rgba(63,94,251,0) 100%)
+                        opacity: 0
+                        transition: 0.3s ease
+
+                        .circular_progress
+                            position: relative
+                            height: 30px
+                            width: 30px
+                            border-radius: 50%
+                            background: conic-gradient(#535bf2 100deg, transparent 0deg)
+                            display: flex
+                            justify-content: center
+                            align-items: center
+
+                            span
+                                position: relative
+                                color: #ededed
+                                font-size: 14px
+
+                        .circular_progress:before
+                            content: ""
+                            position: absolute
+                            width: 24px
+                            height: 24px
+                            border-radius: 50%
+                            background-color: rgba(9,1,37,0.9)
+
+                            
+                                
                 .movie:hover
                     cursor: pointer
 
                     img
                         transform: scale(1.1)
+
+                    .movie_info
+                        bottom: 0
+                        opacity: 1
 
             .carousel_wrapper:hover  
                 .carousel_controls
