@@ -69,7 +69,7 @@ body
             position: relative
 
             .header_controls
-                
+                display: none
 
             .header_navigation
                 position: absolute
@@ -89,10 +89,7 @@ body
 
                 .nav_header:hover
                     cursor: pointer
-                    background-color: rgba(255, 255, 255, 0.3)
-
-                #slide1:checked + #s1
-                    background-color: rgba(255, 255, 255, 0.8)    
+                    background-color: rgba(255, 255, 255, 0.3)   
             
             .header_wrapper
                 height: 100%
@@ -157,6 +154,7 @@ body
                             display: flex
                             margin-top: 20px
                             align-items: center
+                            margin-bottom: 20px
 
                             #slash
                                 height: 25px
@@ -171,7 +169,7 @@ body
                                 letter-spacing: 1.5px
                                 font-weight: 500
                                 padding: 1px 6px
-                                border: 2px solid #535bf2
+                                border: 2px solid rgba(255, 255, 255, 0.7)
                                 color: rgba(255, 255, 255, 0.7)
                                 border-radius: 2px
                                 margin: 0
@@ -181,6 +179,26 @@ body
                                 color: rgba(255, 255, 255, 0.8)
                                 font-weight: 700
                                 margin-right: 10px
+
+                        .about_btn
+                            width: 150px
+                            height: 40px
+                            background-color: transparent
+                            border: 2px solid #535bf2
+                            color: #535bf2
+                            font-size: 15px
+                            font-weight: 700
+                            border-radius: 6px
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            text-decoration: none
+                            transition: 0.3s ease
+
+                        .about_btn:hover
+                            background-color: #535bf2
+                            color: rgba(255, 255, 255, 0.7)
+                            box-shadow: 0px 0px 20px 4px #535bf2
                                 
                         
         .carousel_container::-webkit-scrollbar
@@ -261,32 +279,7 @@ body
                         background: rgb(9,1,37)
                         background: linear-gradient(0deg, rgba(9,1,37,0.9051995798319328) 90%, rgba(63,94,251,0) 100%)
                         opacity: 0
-                        transition: 0.3s ease
-
-                        .circular_progress
-                            position: relative
-                            height: 30px
-                            width: 30px
-                            border-radius: 50%
-                            background: conic-gradient(#535bf2 100deg, transparent 0deg)
-                            display: flex
-                            justify-content: center
-                            align-items: center
-
-                            span
-                                position: relative
-                                color: #ededed
-                                font-size: 14px
-
-                        .circular_progress:before
-                            content: ""
-                            position: absolute
-                            width: 24px
-                            height: 24px
-                            border-radius: 50%
-                            background-color: rgba(9,1,37,0.9)
-
-                            
+                        transition: 0.3s ease                           
                                 
                 .movie:hover
                     cursor: pointer
@@ -301,11 +294,62 @@ body
             .carousel_wrapper:hover  
                 .carousel_controls
                     opacity: 1
+    
+    .circular_progress
+        position: relative
+        height: 30px
+        width: 30px
+        border-radius: 50%
+        background: conic-gradient(#535bf2 100deg, transparent 0deg)
+        display: flex
+        justify-content: center
+        align-items: center
+
+        span
+            position: relative
+            color: #ededed
+            font-size: 14px
+
+    .circular_progress:before
+        content: ""
+        position: absolute
+        width: 24px
+        height: 24px
+        border-radius: 50%
+        background-color: rgba(9,1,37,0.9)
 
     .watch
         margin-left: 65px
         min-height: 100vh
         position: relative
+
+        #close_trailer
+            position: absolute
+            width: 50px
+            height: 50px
+            background-color: transparent
+            right: 100px
+            top: 30px
+            border: none
+            font-size: 50px
+            cursor: pointer
+            
+         
+        .trailer_container
+            position: fixed
+            top: 0
+            left: 0
+            width: calc(100% + 65px)
+            height: 100%
+            background-color: rgba(0, 0, 0, 0.8) 
+            z-index: 9999
+            display: flex
+            justify-content: center
+            align-items: center
+
+            .trailer
+                width: 80%
+                aspect-ratio: 16/9
 
         #go_back_btn
             position: absolute
@@ -330,48 +374,67 @@ body
         .movie_infos
             position: absolute
             bottom: 60px
-            left: 50px
-            max-width: 800px
+            width: 100%
+            display: flex
+            justify-content: space-around
+            align-items: center
 
-            h2
-                text-transform: uppercase
-                font-size: 52px
-                font-weight: 700
-                margin-bottom: 10px
+            .vote_container
+                .circular_progress
+                    width: 100px
+                    height: 100px
 
-            p
-                font-size: 15px
-                font-weight: 400
-                color: rgba(255, 255, 255, 0.7)
+                    span
+                        font-size: 26px
 
-            span
-                display: flex
-                margin-top: 20px
-                align-items: center
+                .circular_progress:before
+                    width: 90%
+                    height: 90%
+                    background-color: #10162F
+                    
 
-                #slash
-                    height: 25px
-                    background-color: rgba(255, 255, 255, 0.7)
-                    border: none
-                    width: 2px
-                    margin-right: 10px
+            .infos_text
+                max-width: 800px
+
+                h2
+                    text-transform: uppercase
+                    font-size: 52px
+                    font-weight: 700
+                    margin-bottom: 10px
+
+                p
+                    font-size: 15px
+                    font-weight: 400
+                    color: rgba(255, 255, 255, 0.7)
 
                 span
-                    text-transform: uppercase
-                    font-size: 13px
-                    letter-spacing: 1.5px
-                    font-weight: 500
-                    padding: 1px 6px
-                    border: 2px solid #535bf2
-                    color: rgba(255, 255, 255, 0.7)
-                    border-radius: 2px
-                    margin: 0
-                    margin-right: 5px
-                            
-                p
-                    color: rgba(255, 255, 255, 0.8)
-                    font-weight: 700
-                    margin-right: 10px
+                    display: flex
+                    margin-top: 20px
+                    align-items: center
+
+                    #slash
+                        height: 25px
+                        background-color: rgba(255, 255, 255, 0.7)
+                        border: none
+                        width: 2px
+                        margin-right: 10px
+
+                    span
+                        text-transform: uppercase
+                        font-size: 13px
+                        letter-spacing: 1.5px
+                        font-weight: 500
+                        padding: 1px 6px
+                        border: 2px solid #535bf2
+                        color: rgba(255, 255, 255, 0.7)
+                        border-radius: 2px
+                        margin: 0
+                        margin-right: 5px
+                                
+                    p
+                        color: rgba(255, 255, 255, 0.8)
+                        font-weight: 700
+                        margin-right: 10px
 
         .link_trailer_container
             width: 100%
@@ -385,15 +448,32 @@ body
                 margin: 0 auto
                 font-size: 16px
                 border-radius: 8px
+                transition: 0.2s ease-in
                 
                 div
                     display: flex
                     justify-content: center
                     align-items: center
-                    color: #2d37eb
+                    transition: 0.3s ease-in
 
                 i
                     font-size: 25px
-                    color: #2d37eb
                     margin-left: 10px
+
+                p, i
+                    color: #2d37eb
+
+            button:hover
+                cursor: pointer
+                background-color: #2d37eb
+
+                div
+                    
+
+                    i, p
+                        color: #ededed
+                
+                
+                
+
             

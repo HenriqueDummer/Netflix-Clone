@@ -9,7 +9,7 @@ const About = () => {
     const [data, setData] = useState()
     const [trailerPath, setTrailerPath] = useState()
     const [videos, setVideos] = useState([])
-   
+    const [watchingTrailer, setWatchingTrailer] = useState()
     
    
     useEffect(() => {
@@ -49,38 +49,50 @@ const About = () => {
   return (
     <div className='watch'>
         <Link to={'/'}><button id='go_back_btn'><i className='bi bi-arrow-left-short'></i></button></Link>
-        
-            {/* <iframe src={`https://www.youtube.com/embed/${trailerPath}?rel=0&showinfo=0&autohide=1&controls=0&autoplay=1&disablekb=1&cc_load_policy=3&modestbranding=1`}
-                frameborder="0"
-                showinfo="0"
-            >
-            </iframe> */}
+        {watchingTrailer && 
+        <div className="trailer_container" onClick={() => setWatchingTrailer(false)}>
+            <iframe className='trailer' src={`https://www.youtube.com/embed/${trailerPath}?rel=0&showinfo=0&autohide=1&controls=0&autoplay=1&disablekb=1&cc_load_policy=3&modestbranding=1`}
+                  frameborder="0"
+                  showinfo="0"
+              >
+            </iframe>
+            <button id='close_trailer'><i class="bi bi-x-circle-fill"></i></button>
+        </div>
+        }
+           
             <div className="header_container">
                 <div className="header_wrapper">
                     {data && 
                         <div className='header_movie'  style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
                             <div className="header_filter2"></div>
                             <div className="movie_infos">
-                                <h2>{data.original_title}</h2>
+                              <div className="infos_text">
+                              <h2>{data.original_title}</h2>
                                 <p>{data.overview}</p>
                                 <span>
                                     <p>{data.release_date.split('').slice(0,4).join('')}</p>
                                     <div id='slash'></div>
                                     {data.genres.map((genre) => <span>{genre.name}</span>)}
                                 </span>
+                              </div>
+                              <div className="vote_container">
+                                <div className="circular_progress" style={{background:`conic-gradient(#535bf2 ${(data.vote_average * 360) / 10}deg, transparent 0deg)`}}>
+                                  <span>{Math.round(data.vote_average * 10) / 10}</span>
+                                </div>
+                              </div>
+                              
                             </div>
                         </div>
                     }
                 </div>  
             </div>
             <div className="link_trailer_container">
-                <Link to={'/watch/:path'} className='watch_trailer_btn'>
-                    <button>
-                        <div>
-                            Watch the trailer 
-                            <i class='bx bx-movie-play' ></i>
-                        </div>  
-                    </button></Link>
+              <button onClick={() => setWatchingTrailer(true)}>
+                <div>
+                  <p>Watch the trailer </p>
+                  <i class='bx bx-movie-play' ></i>
+                </div>  
+              </button>  
             </div>
         </div>
   )

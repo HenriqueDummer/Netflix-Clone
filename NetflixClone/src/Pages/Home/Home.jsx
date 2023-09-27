@@ -89,7 +89,7 @@ const Home = () => {
 
   const [headerPosition, setHeaderPosition] = useState(0)
   const [moviesOnCarousel, setMoviesOnCarousel] = useState(Math.round(((window.innerWidth - 85) / 4) / 100))
-
+  const [selectedOption, setSelectedOption] = useState('slide1')
   
   useEffect(() => {
     const handleResize = () => {
@@ -104,23 +104,89 @@ const Home = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const handleRadioChange = (e) => {
+    setHeaderPosition(e.target.value)
+    setSelectedOption(e.target.id)
+  }
     
   return (
     <div className='home'>
       <div className="header_container">
           <div className="header_controls">
-              <input type="radio" name='slide' id='slide1' value={0} onChange={(e) => setHeaderPosition(e.target.value)}/>
-              <input type="radio" name='slide' id='slide2' value={-100} onChange={(e) => setHeaderPosition(e.target.value)}/>
-              <input type="radio" name='slide' id='slide3' value={-200} onChange={(e) => setHeaderPosition(e.target.value)}/>
-              <input type="radio" name='slide' id='slide4' value={-300} onChange={(e) => setHeaderPosition(e.target.value)}/>
-              <input type="radio" name='slide' id='slide5' value={-400} onChange={(e) => setHeaderPosition(e.target.value)}/>
+              <input 
+                type="radio"  
+                name='slide' 
+                id='slide1' 
+                value={0} 
+                checked={selectedOption === 'slide1'}
+                onChange={(e) => handleRadioChange(e)}
+              />
+              <input 
+                type="radio"  
+                name='slide' 
+                id='slide2' 
+                value={-100} 
+                checked={selectedOption === 'slide2'}
+                onChange={(e) => handleRadioChange(e)}/>
+              <input 
+                type="radio"  
+                name='slide' 
+                id='slide3' 
+                value={-200} 
+                checked={selectedOption === 'slide3'}
+                onChange={(e) => handleRadioChange(e)}/>
+              <input 
+                type="radio"  
+                name='slide' 
+                id='slide4' 
+                value={-300} 
+                checked={selectedOption === 'slide4'}
+                onChange={(e) => handleRadioChange(e)}/>
+              <input 
+                type="radio"  
+                name='slide' 
+                id='slide5' 
+                value={-400} 
+                checked={selectedOption === 'slide5'}
+                onChange={(e) => handleRadioChange(e)}/>
             </div>
             <div className="header_navigation">
-              <label htmlFor="slide1" className='nav_header' id='s1' ></label>
-              <label htmlFor="slide2" className='nav_header' id='s2'></label>
-              <label htmlFor="slide3" className='nav_header' id='s3'></label>
-              <label htmlFor="slide4" className='nav_header' id='s4'></label>
-              <label htmlFor="slide5" className='nav_header' id='s5'></label>
+              <label 
+                htmlFor="slide1" 
+                className='nav_header' 
+                id='s1'
+                style={{backgroundColor: selectedOption === 'slide1' ? '#efefef' : "transparent"}}
+                >
+              </label>
+              <label 
+                htmlFor="slide2" 
+                className='nav_header' 
+                id='s2'
+                style={{backgroundColor: selectedOption === 'slide2' ? '#efefef' : "transparent"}}
+              >
+                </label>
+              <label 
+                htmlFor="slide3" 
+                className='nav_header' 
+                id='s3'
+                style={{backgroundColor: selectedOption === 'slide3' ? '#efefef' : "transparent"}}
+              >
+                </label>
+              <label 
+                htmlFor="slide4" 
+                className='nav_header' 
+                id='s4'
+                style={{backgroundColor: selectedOption === 'slide4' ? '#efefef' : "transparent"}}
+              >
+                </label>
+              <label 
+                htmlFor="slide5" 
+                className='nav_header' 
+                id='s5'
+                style={{backgroundColor: selectedOption === 'slide5' ? '#efefef' : "transparent"}}
+              >
+                </label>
             </div>
         <div className="header_wrapper" style={{transform: `translateX(${headerPosition}%)`}}>
           {header_data && header_data.map((movie) => {
@@ -146,6 +212,7 @@ const Home = () => {
                       )
                     })}
                   </span>
+                  <Link className='about_btn' to={`/about/${movie.id}`}>ABOUT</Link>
                 </div>
               </div>
             )

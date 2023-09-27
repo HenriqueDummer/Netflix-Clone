@@ -66,6 +66,9 @@ body {
   overflow: hidden;
   position: relative;
 }
+.app .home .header_container .header_controls, .app .watch .header_container .header_controls {
+  display: none;
+}
 .app .home .header_container .header_navigation, .app .watch .header_container .header_navigation {
   position: absolute;
   bottom: 50px;
@@ -85,9 +88,6 @@ body {
 .app .home .header_container .header_navigation .nav_header:hover, .app .watch .header_container .header_navigation .nav_header:hover {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.3);
-}
-.app .home .header_container .header_navigation #slide1:checked + #s1, .app .watch .header_container .header_navigation #slide1:checked + #s1 {
-  background-color: rgba(255, 255, 255, 0.8);
 }
 .app .home .header_container .header_wrapper, .app .watch .header_container .header_wrapper {
   height: 100%;
@@ -148,6 +148,7 @@ body {
   display: flex;
   margin-top: 20px;
   align-items: center;
+  margin-bottom: 20px;
 }
 .app .home .header_container .header_wrapper .header_movie .header_movie_infos span #slash, .app .watch .header_container .header_wrapper .header_movie .header_movie_infos span #slash {
   height: 25px;
@@ -162,7 +163,7 @@ body {
   letter-spacing: 1.5px;
   font-weight: 500;
   padding: 1px 6px;
-  border: 2px solid #535bf2;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   color: rgba(255, 255, 255, 0.7);
   border-radius: 2px;
   margin: 0;
@@ -172,6 +173,26 @@ body {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 700;
   margin-right: 10px;
+}
+.app .home .header_container .header_wrapper .header_movie .header_movie_infos .about_btn, .app .watch .header_container .header_wrapper .header_movie .header_movie_infos .about_btn {
+  width: 150px;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid #535bf2;
+  color: #535bf2;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.app .home .header_container .header_wrapper .header_movie .header_movie_infos .about_btn:hover, .app .watch .header_container .header_wrapper .header_movie .header_movie_infos .about_btn:hover {
+  background-color: #535bf2;
+  color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 20px 4px #535bf2;
 }
 .app .home .carousel_container::-webkit-scrollbar, .app .watch .carousel_container::-webkit-scrollbar {
   display: none;
@@ -253,29 +274,6 @@ body {
   opacity: 0;
   transition: 0.3s ease;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_info .circular_progress, .app .watch .carousel_container .carousel_wrapper .movie .movie_info .circular_progress {
-  position: relative;
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  background: conic-gradient(#535bf2 100deg, transparent 0deg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.app .home .carousel_container .carousel_wrapper .movie .movie_info .circular_progress span, .app .watch .carousel_container .carousel_wrapper .movie .movie_info .circular_progress span {
-  position: relative;
-  color: #ededed;
-  font-size: 14px;
-}
-.app .home .carousel_container .carousel_wrapper .movie .movie_info .circular_progress:before, .app .watch .carousel_container .carousel_wrapper .movie .movie_info .circular_progress:before {
-  content: "";
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: rgba(9, 1, 37, 0.9);
-}
 .app .home .carousel_container .carousel_wrapper .movie:hover, .app .watch .carousel_container .carousel_wrapper .movie:hover {
   cursor: pointer;
 }
@@ -289,10 +287,60 @@ body {
 .app .home .carousel_container .carousel_wrapper:hover .carousel_controls, .app .watch .carousel_container .carousel_wrapper:hover .carousel_controls {
   opacity: 1;
 }
+.app .circular_progress {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: conic-gradient(#535bf2 100deg, transparent 0deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app .circular_progress span {
+  position: relative;
+  color: #ededed;
+  font-size: 14px;
+}
+.app .circular_progress:before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(9, 1, 37, 0.9);
+}
 .app .watch {
   margin-left: 65px;
   min-height: 100vh;
   position: relative;
+}
+.app .watch #close_trailer {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  right: 100px;
+  top: 30px;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+}
+.app .watch .trailer_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100% + 65px);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app .watch .trailer_container .trailer {
+  width: 80%;
+  aspect-ratio: 16/9;
 }
 .app .watch #go_back_btn {
   position: absolute;
@@ -317,33 +365,50 @@ body {
 .app .watch .movie_infos {
   position: absolute;
   bottom: 60px;
-  left: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.app .watch .movie_infos .vote_container .circular_progress {
+  width: 100px;
+  height: 100px;
+}
+.app .watch .movie_infos .vote_container .circular_progress span {
+  font-size: 26px;
+}
+.app .watch .movie_infos .vote_container .circular_progress:before {
+  width: 90%;
+  height: 90%;
+  background-color: #10162F;
+}
+.app .watch .movie_infos .infos_text {
   max-width: 800px;
 }
-.app .watch .movie_infos h2 {
+.app .watch .movie_infos .infos_text h2 {
   text-transform: uppercase;
   font-size: 52px;
   font-weight: 700;
   margin-bottom: 10px;
 }
-.app .watch .movie_infos p {
+.app .watch .movie_infos .infos_text p {
   font-size: 15px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
 }
-.app .watch .movie_infos span {
+.app .watch .movie_infos .infos_text span {
   display: flex;
   margin-top: 20px;
   align-items: center;
 }
-.app .watch .movie_infos span #slash {
+.app .watch .movie_infos .infos_text span #slash {
   height: 25px;
   background-color: rgba(255, 255, 255, 0.7);
   border: none;
   width: 2px;
   margin-right: 10px;
 }
-.app .watch .movie_infos span span {
+.app .watch .movie_infos .infos_text span span {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 1.5px;
@@ -355,7 +420,7 @@ body {
   margin: 0;
   margin-right: 5px;
 }
-.app .watch .movie_infos span p {
+.app .watch .movie_infos .infos_text span p {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 700;
   margin-right: 10px;
@@ -372,17 +437,27 @@ body {
   margin: 0 auto;
   font-size: 16px;
   border-radius: 8px;
+  transition: 0.2s ease-in;
 }
 .app .watch .link_trailer_container button div {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #2d37eb;
+  transition: 0.3s ease-in;
 }
 .app .watch .link_trailer_container button i {
   font-size: 25px;
-  color: #2d37eb;
   margin-left: 10px;
+}
+.app .watch .link_trailer_container button p, .app .watch .link_trailer_container button i {
+  color: #2d37eb;
+}
+.app .watch .link_trailer_container button:hover {
+  cursor: pointer;
+  background-color: #2d37eb;
+}
+.app .watch .link_trailer_container button:hover div i, .app .watch .link_trailer_container button:hover div p {
+  color: #ededed;
 }
 
 /*# sourceMappingURL=styles.css.map */
