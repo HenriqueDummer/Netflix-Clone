@@ -91,6 +91,20 @@ const Home = () => {
   const [moviesOnCarousel, setMoviesOnCarousel] = useState(Math.round(((window.innerWidth - 85) / 4) / 100))
   const [selectedOption, setSelectedOption] = useState('slide1')
   
+  // useEffect(() => {
+  //   const moveCarousel = () => {
+  //     if(selectedOption === "slide4"){
+  //       setSelectedOption('slide1')
+  //     } else {
+  //       setSelectedOption(`slide${selectedOption + 1}`)
+  //     }
+  //   }
+  //   const timer = setInterval(moveCarousel(), 5000)
+
+  //   return () => clearInterval(timer)
+  //   console.log(headerPosition)
+  // },[])
+
   useEffect(() => {
     const handleResize = () => {
       setMoviesOnCarousel(Math.floor(((window.innerWidth - 85) / 4) / 100));
@@ -156,35 +170,35 @@ const Home = () => {
                 htmlFor="slide1" 
                 className='nav_header' 
                 id='s1'
-                style={{backgroundColor: selectedOption === 'slide1' ? '#efefef' : "transparent"}}
+                style={{backgroundColor: selectedOption === 'slide1' ? '#efefef' : ""}}
                 >
               </label>
               <label 
                 htmlFor="slide2" 
                 className='nav_header' 
                 id='s2'
-                style={{backgroundColor: selectedOption === 'slide2' ? '#efefef' : "transparent"}}
+                style={{backgroundColor: selectedOption === 'slide2' ? '#efefef' : ""}}
               >
                 </label>
               <label 
                 htmlFor="slide3" 
                 className='nav_header' 
                 id='s3'
-                style={{backgroundColor: selectedOption === 'slide3' ? '#efefef' : "transparent"}}
+                style={{backgroundColor: selectedOption === 'slide3' ? '#efefef' : ""}}
               >
                 </label>
               <label 
                 htmlFor="slide4" 
                 className='nav_header' 
                 id='s4'
-                style={{backgroundColor: selectedOption === 'slide4' ? '#efefef' : "transparent"}}
+                style={{backgroundColor: selectedOption === 'slide4' ? '#efefef' : ""}}
               >
                 </label>
               <label 
                 htmlFor="slide5" 
                 className='nav_header' 
                 id='s5'
-                style={{backgroundColor: selectedOption === 'slide5' ? '#efefef' : "transparent"}}
+                style={{backgroundColor: selectedOption === 'slide5' ? '#efefef' : ""}}
               >
                 </label>
             </div>
@@ -212,7 +226,7 @@ const Home = () => {
                       )
                     })}
                   </span>
-                  <Link className='about_btn' to={`/about/${movie.id}`}>ABOUT</Link>
+                  <Link className='about_btn' to={`about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>ABOUT</Link>
                 </div>
               </div>
             )

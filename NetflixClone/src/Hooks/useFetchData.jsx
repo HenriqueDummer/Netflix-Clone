@@ -51,7 +51,7 @@ const useFetchData = (movie = null, series = null, status = null, genre = null, 
                     query = 'tv/on_the_air?language=en-US&page=1'
                     break;
                 case 'Popular':
-                    query = 'tv/popular?language=en-US&page=1' 
+                    query = 'tv/popular?language=en-US&region=US&page=2' 
                     break;
                 case 'Top Rated':
                     query = 'tv/top_rated?language=en-US&page=1'
