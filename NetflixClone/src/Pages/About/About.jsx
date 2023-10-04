@@ -3,15 +3,20 @@ import useFetchData from '../../Hooks/useFetchData'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Link, Navigate } from 'react-router-dom'
 
+import Carousel from '../../Components/Carousel'
+
 const About = () => {
     let {id} = useParams()
     const isMovie = id.split('')[0] === "m" ? true : false
     id = id.split('').slice(1, id.length).join('')
     const [data, setData] = useState()
+    const [castData, setCastData] = useState()
+    const [similarData, setSimilarData] = useState()
     const [trailerPath, setTrailerPath] = useState()
     const [videos, setVideos] = useState([])
+    const [moviesOnCarousel, setMoviesOnCarousel] = useState(Math.round(((window.innerWidth - 85) / 4) / 100))
+
     const [watchingTrailer, setWatchingTrailer] = useState()
-    const [fetchError, setFetchError] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,6 +37,10 @@ const About = () => {
             const videosData = await videosResponse.json();
             setVideos(videosData.results);
 
+            const castResponse = await fetch(`https://api.themoviedb.org/3/${isMovie ? "movie" : "tv"}/${id}/credits?language=en-US`, options);
+            const castDataRes = await castResponse.json();
+            setCastData(castDataRes.cast.slice(0, 10));
+
             if(videosData){
               for (let i = 0; i < videosData.results.length; i++) {
                 if (videosData.results[i].type === "Trailer") {
@@ -42,8 +51,7 @@ const About = () => {
             }
   
           } catch (error) {
-            console.log('error');
-            setFetchError(true)
+            console.log(error);
           }
         };
 
@@ -51,11 +59,24 @@ const About = () => {
         fetchData();
       }, [id]);
 
-    console.log(videos)
+      useEffect(() => {
+        const handleResize = () => {
+          setMoviesOnCarousel(Math.floor(((window.innerWidth - 85) / 4) / 100));
+        };
+      
+        window.addEventListener('resize', handleResize);
+      
+        handleResize();
+      
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
+
   return (
     <>
     {/* {fetchError && <Navigate to="/" />} */}
-    {data && <div className='watch'>
+    <div className='watch'>
         <Link to={'/'}><button id='go_back_btn'><i className='bi bi-arrow-left-short'></i></button></Link>
         {watchingTrailer && 
         <div className="trailer_container" onClick={() => setWatchingTrailer(false)}>
@@ -103,7 +124,33 @@ const About = () => {
                 </div>  
               </button>  
             </div>}
-        </div>}
+
+            {castData &&
+            <div className="cast_container">
+              
+              <div className="cast_actors">
+                {castData.map((actor) => {
+                  return(
+                    <>
+                      <div className="actor">
+                        <img src={`https://image.tmdb.org/t/p/original${actor.profile_path}`} alt="" />
+                        <p>{actor.name}</p>
+                        <span>as {actor.character}</span>
+                      </div>
+                    </>
+                  )
+                })}
+              </div>
+            </div>}
+          <div className="carousel_container">
+            <div className="carousel">
+              <h3>Resembling</h3>
+              <Carousel data = {useFetchData(true, true, null, 20, id)} moviesOnCarousel = {moviesOnCarousel}  />
+            </div>
+          </div>
+        </div>
+        
+        
     </>
     
   )

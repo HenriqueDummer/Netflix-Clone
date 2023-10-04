@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Carousel = (props) => {
 
+    console.log(props)
     const {data} = props.data
 
     const moviesOnCarousel = props.moviesOnCarousel
@@ -33,7 +34,10 @@ const Carousel = (props) => {
       }
     }
 
-    console.log(data)
+    const goToTop = () => {
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
+    }
+    
    return(
       <div className="carousel_wrapper" id='carousel_wrapper'>
         <button id='move_left' onClick={() => moveCarouselLeft()}><i className='bi bi-arrow-left-short'></i></button>
@@ -42,7 +46,7 @@ const Carousel = (props) => {
           {data && data.map((movie) => {
             if(movie.original_language){
               return(
-                <Link to={`about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>
+                <Link onClick={goToTop} to={`/about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>
                   <div key={movie.id} className="movie">
                       <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="" />
                       <div className="movie_info">

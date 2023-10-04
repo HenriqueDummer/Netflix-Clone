@@ -6,7 +6,7 @@ import useFetchData from '../../Hooks/useFetchData'
 import Carousel from '../../Components/Carousel'
 
 const Home = () => {
-  const {data: header_data} = useFetchData(true, null, "Now Playing", null, 5)
+  const {data: header_data} = useFetchData(true, null, "Now Playing", 5)
 
   const genres = [
     {
@@ -240,15 +240,15 @@ const Home = () => {
         </div>
         <div className="carousel">
           <h3>Top Rated</h3>
-          <Carousel data = {useFetchData(true, false, "Top Rated")} moviesOnCarousel = {moviesOnCarousel}  />
+          <Carousel data = {useFetchData(true, null, "Top Rated")} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
         <div className="carousel">
           <h3>Popular series</h3>
-          <Carousel data = {useFetchData(false, true, "Popular")} moviesOnCarousel = {moviesOnCarousel}  />
+          <Carousel data = {useFetchData(false, null, "Popular")} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
         <div className="carousel">
           <h3>Now Playing</h3>
-          <Carousel data = {useFetchData(true, false, "Now Playing")} moviesOnCarousel = {moviesOnCarousel}  />
+          <Carousel data = {useFetchData(true, null, "Now Playing")} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
       </div>
       <div className="footer">

@@ -319,6 +319,9 @@ body {
   min-height: 100vh;
   position: relative;
 }
+.app .watch .header_container {
+  height: 800px;
+}
 .app .watch #close_trailer {
   position: absolute;
   width: 50px;
@@ -465,6 +468,46 @@ body {
 }
 .app .watch .link_trailer_container button:hover div i, .app .watch .link_trailer_container button:hover div p {
   color: #ededed;
+}
+.app .watch .cast_container {
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.app .watch .cast_container h3 {
+  font-size: 35px;
+}
+.app .watch .cast_container .cast_actors {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.app .watch .cast_container .cast_actors .actor {
+  text-align: center;
+  width: 14%;
+  min-width: 140px;
+}
+.app .watch .cast_container .cast_actors .actor p {
+  font-size: 16px;
+  font-weight: 900;
+}
+.app .watch .cast_container .cast_actors .actor span {
+  font-weight: 400;
+  color: rgba(184, 184, 184, 0.937254902);
+  font-size: 15px;
+}
+.app .watch .cast_container .cast_actors .actor img {
+  width: 100%;
+  border-radius: 5px;
+}
+.app .watch .carousel_container {
+  margin-top: 50px;
+  padding-bottom: 20px;
+}
+.app .watch .carousel_container h3 {
+  font-size: 24px;
 }
 
 /*# sourceMappingURL=styles.css.map */
