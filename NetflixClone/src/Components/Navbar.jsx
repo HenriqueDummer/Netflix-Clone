@@ -13,13 +13,13 @@ export const Navbar = () => {
             <div className="nav_links_container">
                     <ul>
                         <li>
-                            <NavLink className='link' to={'/search'}>
+                            <NavLink className={({isActive}) => (isActive ? 'active' : '')} to={'/search'}>
                                 <i className='bi bi-search'></i> 
                                 <p>Search</p>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={'/'}>
+                            <NavLink className={({isActive}) => (isActive ? 'active' : '')} to={'/'}>
                                 <i className='bi bi-house'></i> 
                                 <p>Home</p>
                             </NavLink>

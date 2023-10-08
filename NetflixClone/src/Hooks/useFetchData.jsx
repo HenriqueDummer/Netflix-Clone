@@ -3,6 +3,86 @@ import { useState, useEffect } from "react";
 const useFetchData = (movie = null, similar = null, params = null, number = 20, id = null) => {
 
     const [data, setData] = useState()
+    console.log(data)
+
+    const genres = [
+      {
+        "id": 28,
+        "name": "Action"
+      },
+      {
+        "id": 12,
+        "name": "Adventure"
+      },
+      {
+        "id": 16,
+        "name": "Animation"
+      },
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 99,
+        "name": "Documentary"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 10751,
+        "name": "Family"
+      },
+      {
+        "id": 14,
+        "name": "Fantasy"
+      },
+      {
+        "id": 36,
+        "name": "History"
+      },
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 10402,
+        "name": "Music"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      },
+      {
+        "id": 10749,
+        "name": "Romance"
+      },
+      {
+        "id": 878,
+        "name": "Science Fiction"
+      },
+      {
+        "id": 10770,
+        "name": "TV Movie"
+      },
+      {
+        "id": 53,
+        "name": "Thriller"
+      },
+      {
+        "id": 10752,
+        "name": "War"
+      },
+      {
+        "id": 37,
+        "name": "Western"
+      }
+    ]
 
     const options = {
         method: 'GET',
@@ -11,8 +91,6 @@ const useFetchData = (movie = null, similar = null, params = null, number = 20, 
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNzM3MTIxZTE0MzZiOTVhNjlhZTc5Y2NkNmJjOGY0ZSIsInN1YiI6IjYzOTEwNTk5MDkxZTYyMDA3ZmE0ZWE3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iVOBV5t6MX4Y3sZu1EKYcU5IVZ_jvQUMRHALDvT-8pY'
         }
       };
-
-      let query = ''
 
       const buildQuery = () => {
         if (similar) {
@@ -63,61 +141,8 @@ const useFetchData = (movie = null, similar = null, params = null, number = 20, 
           .then(response => setData(response.results.slice(0, number)))
           .catch(err => console.error(err));
 
-          
-        
-        // if(!similar)
-        //     {if(movie){
-        //         if(status){
-        //             switch(status){
-        //                 case 'Now Playing':
-        //                     query = 'movie/now_playing?language=en-US&page=1'
-        //                     break;
-        //                 case 'Popular':
-        //                     query = 'movie/popular?language=en-US&page=1'
-        //                     break;
-        //                 case 'Top Rated':
-        //                     query = 'movie/top_rated?language=en-US&page=1' 
-        //                     console.log("TopRAted")
-        //                     break;
-        //                 case 'Upcoming':
-        //                     query = 'movie/upcoming?language=en-US&page=1'
-        //                 default:
-        //                     query = 'discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
-        //                     break
-        //             }
-        //         }else if(genre){
-        //             console.log("genre")
-        //             query =`discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genre}`
-        //         }  else {
-        //             query = 'movie/popular?language=en-US&page=1' 
-        //         }
-        //     }else{
-        //         switch(status){
-        //             case 'Airing Today':
-        //                 query = 'tv/airing_today?language=en-US&page=1'
-        //                 break;
-        //             case 'On The Air':
-        //                 query = 'tv/on_the_air?language=en-US&page=1'
-        //                 break;
-        //             case 'Popular':
-        //                 query = 'tv/popular?language=en-US&region=US&page=2' 
-        //                 break;
-        //             case 'Top Rated':
-        //                 query = 'tv/top_rated?language=en-US&page=1'
-        //             default: 
-        //                 query = 'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'
-        //                 break
-        //         }
-        //     }
-        // } else{
-        //     query = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`
-        //     console.log(id)
-        // }
-
-        
-
       }, [movie, params])
-      console.log(data)
+
 
       return {data}
 }

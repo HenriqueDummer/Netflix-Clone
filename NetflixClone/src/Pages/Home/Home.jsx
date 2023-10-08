@@ -212,7 +212,7 @@ const Home = () => {
                   <h2>{movie.original_title}</h2>
                   <p>{movie.overview}</p>
                   <span>
-                    <p>{movie.release_date.split('').slice(0,4).join('')}</p>
+                    <p>{movie.release_date.split('').slice(0,4)}</p>
                     <div id='slash'></div>
                     {movie.genre_ids.map((genre_id) => {
                       return(
