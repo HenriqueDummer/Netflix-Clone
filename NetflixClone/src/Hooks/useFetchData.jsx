@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
-const useFetchData = (movie = null, similar = null, params = null, number = 20, id = null) => {
+const useFetchData = (props) => {
 
     const [data, setData] = useState()
-    console.log(data)
 
     const genres = [
       {
@@ -93,9 +92,9 @@ const useFetchData = (movie = null, similar = null, params = null, number = 20, 
       };
 
       const buildQuery = () => {
-        if (similar) {
-          return `movie/${id}/similar?language=en-US&page=1`;
-        } else if (movie) {
+        if (props.similar) {
+          return `movie/${props.id}/similar?language=en-US&page=1`;
+        } else if (props.movie) {
           return buildMovieQuery();
         } else {
           return buildTVQuery();
@@ -103,7 +102,7 @@ const useFetchData = (movie = null, similar = null, params = null, number = 20, 
       };
       
       const buildMovieQuery = () => {
-        switch (params) {
+        switch (props.params) {
             case 'Now Playing':
                 return 'movie/now_playing?language=en-US&page=1';
             case 'Popular':
@@ -115,7 +114,7 @@ const useFetchData = (movie = null, similar = null, params = null, number = 20, 
             case null:
                 return 'discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
             default:
-                return `discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genre}`;
+                return `discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${props.params}`;
         }
       };
       
@@ -138,10 +137,10 @@ const useFetchData = (movie = null, similar = null, params = null, number = 20, 
 
         fetch(`https://api.themoviedb.org/3/${buildQuery()}`, options)
           .then(response => response.json())
-          .then(response => setData(response.results.slice(0, number)))
+          .then(response => setData(response.results.slice(0, props.number)))
           .catch(err => console.error(err));
 
-      }, [movie, params])
+      }, [props.movie, props.params])
 
 
       return {data}

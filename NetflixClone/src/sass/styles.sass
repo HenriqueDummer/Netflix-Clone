@@ -101,7 +101,7 @@ body
                     width: 85px
                     height: 25px
                     border-radius: 6px
-                    border: 2px solid rgba(255, 255, 255, 0.8)
+                    border: 2px solid #535bf2
                     transition: 0.3s ease-out
 
                 .nav_header:hover
@@ -270,60 +270,62 @@ body
 
                 #move_left:hover, #move_right:hover
                     cursor: pointer 
-                    opacity: 1
-                            
-                .movie
-                    min-width: 220px
-                    position: relative
-
-                    .movie_link
-                        width: 100%
-
-                        .poster
-                            height: 320px
-                            width: 100%
-                            overflow: hidden
-                            border-radius: 5px
-                            background-size: cover
-                            background-position: center
-                            cursor: pointer
-
-                    .movie_info
-                        width: 100%
-                        margin-top: 6px
-
-                        p
-                            font-size: 18px
-                            font-weight: 600
-                            text-decoration: none                        
-                            
-                        .movie_props
-                            display: flex
-                            align-items: center
-                            justify-content: space-between
-                            padding-block: 5px
-
-                            p
-                                font-size: 15px
-                                font-weight: 400
-                                color: #8f8e8e
-
-                            .movie_actions
-                                display: flex
-                                gap: 15px
-
-                                button
-                                    background-color: transparent 
-                                    border: none
-                                    cursor: pointer
-                                    font-size: 15px
-
-                                    i
-                                        color: #8f8e8e
+                    opacity: 1 
 
             .carousel_wrapper:hover  
                 .carousel_controls
                     opacity: 1
+
+    .movie
+        min-width: 220px
+        position: relative
+
+        .movie_link
+            width: 100%
+
+            .poster
+                        height: 320px
+                        width: 100%
+                        overflow: hidden
+                        border-radius: 5px
+                        background-size: cover
+                        background-position: center
+                        cursor: pointer
+
+        .movie_info
+            width: 100%
+            margin-top: 6px
+
+            p
+                font-size: 18px
+                font-weight: 600
+                text-decoration: none                        
+                            
+            .movie_props
+                display: flex
+                align-items: center
+                justify-content: space-between
+                padding-block: 5px
+
+                p
+                    font-size: 15px
+                    font-weight: 400
+                    color: #8f8e8e
+
+                .movie_actions
+                    display: flex
+                    gap: 15px
+
+                    button
+                        background-color: transparent 
+                        border: none
+                        cursor: pointer
+                        font-size: 15px
+
+                    i
+                        color: #8f8e8e
+
+
     
     .circular_progress
         position: relative
@@ -346,7 +348,7 @@ body
         width: 80%
         height: 80%
         border-radius: 50%
-        background-color: rgba(9,1,37,0.9)
+        background-color: #10162f
 
     .watch
         margin-left: 65px
@@ -596,11 +598,25 @@ body
                     .option
                         width: 180px
                         height: 50px
-                        background-color: #292727
+                        background-color: #494949
                         display: flex
                         justify-content: center
                         align-items: center
                         border-radius: 25px
                         cursor: pointer
+
+        .movies_container
+            padding: 30px 50px
+            .movies_grid
+                display: flex
+                justify-content: center
+                flex-wrap: wrap
+                gap: 30px
+
+                .movie
+                    width: 240px
+
+                    .poster
+                        height: 380px
 
                        

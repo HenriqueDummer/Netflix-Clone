@@ -98,7 +98,7 @@ body {
   width: 85px;
   height: 25px;
   border-radius: 6px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid #535bf2;
   transition: 0.3s ease-out;
 }
 .app .home .header_container .header_navigation .nav_header:hover, .app .watch .header_container .header_navigation .nav_header:hover {
@@ -265,14 +265,17 @@ body {
   cursor: pointer;
   opacity: 1;
 }
-.app .home .carousel_container .carousel_wrapper .movie, .app .watch .carousel_container .carousel_wrapper .movie {
+.app .home .carousel_container .carousel_wrapper:hover .carousel_controls, .app .watch .carousel_container .carousel_wrapper:hover .carousel_controls {
+  opacity: 1;
+}
+.app .movie {
   min-width: 220px;
   position: relative;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_link, .app .watch .carousel_container .carousel_wrapper .movie .movie_link {
+.app .movie .movie_link {
   width: 100%;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_link .poster, .app .watch .carousel_container .carousel_wrapper .movie .movie_link .poster {
+.app .movie .movie_link .poster {
   height: 320px;
   width: 100%;
   overflow: hidden;
@@ -281,41 +284,38 @@ body {
   background-position: center;
   cursor: pointer;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_info, .app .watch .carousel_container .carousel_wrapper .movie .movie_info {
+.app .movie .movie_info {
   width: 100%;
   margin-top: 6px;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_info p, .app .watch .carousel_container .carousel_wrapper .movie .movie_info p {
+.app .movie .movie_info p {
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_info .movie_props, .app .watch .carousel_container .carousel_wrapper .movie .movie_info .movie_props {
+.app .movie .movie_info .movie_props {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-block: 5px;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_info .movie_props p, .app .watch .carousel_container .carousel_wrapper .movie .movie_info .movie_props p {
+.app .movie .movie_info .movie_props p {
   font-size: 15px;
   font-weight: 400;
   color: #8f8e8e;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_info .movie_props .movie_actions, .app .watch .carousel_container .carousel_wrapper .movie .movie_info .movie_props .movie_actions {
+.app .movie .movie_info .movie_props .movie_actions {
   display: flex;
   gap: 15px;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_info .movie_props .movie_actions button, .app .watch .carousel_container .carousel_wrapper .movie .movie_info .movie_props .movie_actions button {
+.app .movie .movie_info .movie_props .movie_actions button {
   background-color: transparent;
   border: none;
   cursor: pointer;
   font-size: 15px;
 }
-.app .home .carousel_container .carousel_wrapper .movie .movie_info .movie_props .movie_actions button i, .app .watch .carousel_container .carousel_wrapper .movie .movie_info .movie_props .movie_actions button i {
+.app .movie .movie_info .movie_props .movie_actions i {
   color: #8f8e8e;
-}
-.app .home .carousel_container .carousel_wrapper:hover .carousel_controls, .app .watch .carousel_container .carousel_wrapper:hover .carousel_controls {
-  opacity: 1;
 }
 .app .circular_progress {
   position: relative;
@@ -338,7 +338,7 @@ body {
   width: 80%;
   height: 80%;
   border-radius: 50%;
-  background-color: rgba(9, 1, 37, 0.9);
+  background-color: #10162f;
 }
 .app .watch {
   margin-left: 65px;
@@ -578,12 +578,27 @@ body {
 .app .movies_page .filters .filters_navigation .filters_wrapper .option {
   width: 180px;
   height: 50px;
-  background-color: #292727;
+  background-color: #494949;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 25px;
   cursor: pointer;
+}
+.app .movies_page .movies_container {
+  padding: 30px 50px;
+}
+.app .movies_page .movies_container .movies_grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.app .movies_page .movies_container .movies_grid .movie {
+  width: 240px;
+}
+.app .movies_page .movies_container .movies_grid .movie .poster {
+  height: 380px;
 }
 
 /*# sourceMappingURL=styles.css.map */

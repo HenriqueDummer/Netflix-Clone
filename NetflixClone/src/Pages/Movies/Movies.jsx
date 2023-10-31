@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useDebugValue, useEffect } from 'react'
 import { useState } from 'react'
+import useFetchData from '../../Hooks/useFetchData'
+import { Link } from 'react-router-dom'
 
 const Movies = () => {
-  const [genreSelected, setGenreSelected] = useState()
-  const [filterPosition, setFilterPosition] = useState(-2360)
+  const [genreSelected, setGenreSelected] = useState('12')
+  const [filterPosition, setFilterPosition] = useState(0)
+  const {data : response} = useFetchData({
+    movie: true,
+    params: genreSelected,
+    number: 20
+  })
+  
+  const [data, setData] = useState()
+  console.log(data)
+
+  useEffect(() => {
+    const loadData = async() => {
+      if(response && response != null){
+        setData(response)
+      }
+    }
+
+    loadData()
+    
+  }, [response])
 
   console.log(genreSelected)
   const handleChange = (e) => {
@@ -170,97 +191,97 @@ const Movies = () => {
           {filterPosition != -2360 && <button onClick={moveRight} id='move_right'><i className='bi bi-arrow-right-short'></i></button>}
           <div className="filters_wrapper" style={{transform: `translateX(${filterPosition}px)`}}>
             <label htmlFor="28">
-              <div className="option"  style={{backgroundColor: genreSelected === '28' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '28' ? '#535bf2' : ''}}>
                 <p>Action</p>
               </div> 
             </label>
             <label htmlFor="12">
-              <div className="option"  style={{backgroundColor: genreSelected === '12' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '12' ? '#535bf2' : ''}}>
                 <p>Adventure</p>
               </div> 
             </label>
             <label htmlFor="16">
-              <div className="option"  style={{backgroundColor: genreSelected === '16' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '16' ? '#535bf2' : ''}}>
                 <p>Animation</p>
               </div> 
             </label>
             <label htmlFor="35">
-              <div className="option"  style={{backgroundColor: genreSelected === '35' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '35' ? '#535bf2' : ''}}>
                 <p>Comedy</p>
               </div> 
             </label>
             <label htmlFor="80">
-              <div className="option"  style={{backgroundColor: genreSelected === '80' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '80' ? '#535bf2' : ''}}>
                 <p>Crime</p>
               </div> 
             </label>
             <label htmlFor="99">
-              <div className="option"  style={{backgroundColor: genreSelected === '99' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '99' ? '#535bf2' : ''}}>
                 <p>Documentary</p>
               </div> 
             </label>
             <label htmlFor="18">
-              <div className="option"  style={{backgroundColor: genreSelected === '18' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '18' ? '#535bf2' : ''}}>
                 <p>Drama</p>
               </div> 
             </label>
             <label htmlFor="10751">
-              <div className="option"  style={{backgroundColor: genreSelected === '10751' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '10751' ? '#535bf2' : ''}}>
                 <p>Family</p>
               </div> 
             </label>
             <label htmlFor="14">
-              <div className="option"  style={{backgroundColor: genreSelected === '14' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '14' ? '#535bf2' : ''}}>
                 <p>Fantasy</p>
               </div> 
             </label>
             <label htmlFor="36">
-              <div className="option"  style={{backgroundColor: genreSelected === '36' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '36' ? '#535bf2' : ''}}>
                 <p>History</p>
               </div> 
             </label>
             <label htmlFor="27">
-              <div className="option"  style={{backgroundColor: genreSelected === '27' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '27' ? '#535bf2' : ''}}>
                 <p>Horror</p>
               </div> 
             </label>
             <label htmlFor="10402">
-              <div className="option"  style={{backgroundColor: genreSelected === '10402' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '10402' ? '#535bf2' : ''}}>
                 <p>Music</p>
               </div> 
             </label>
             <label htmlFor="9648">
-              <div className="option"  style={{backgroundColor: genreSelected === '9648' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '9648' ? '#535bf2' : ''}}>
                 <p>Mystery</p>
               </div> 
             </label>
             <label htmlFor="10749">
-              <div className="option"  style={{backgroundColor: genreSelected === '10749' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '10749' ? '#535bf2' : ''}}>
                 <p>Romance</p>
               </div> 
             </label>
             <label htmlFor="878">
-              <div className="option"  style={{backgroundColor: genreSelected === '10749' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '878' ? '#535bf2' : ''}}>
                 <p>Science Fiction</p>
               </div> 
             </label>
             <label htmlFor="10770">
-              <div className="option"  style={{backgroundColor: genreSelected === '10770' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '10770' ? '#535bf2' : ''}}>
                 <p>TV Movie</p>
               </div> 
             </label>
             <label htmlFor="53">
-              <div className="option"  style={{backgroundColor: genreSelected === '53' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '53' ? '#535bf2' : ''}}>
                 <p>Thriller</p>
               </div> 
             </label>
             <label htmlFor="10752">
-              <div className="option"  style={{backgroundColor: genreSelected === '10752' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '10752' ? '#535bf2' : ''}}>
                 <p>War</p>
               </div> 
             </label>
             <label htmlFor="37">
-              <div className="option"  style={{backgroundColor: genreSelected === '37' ? '#2d37eb' : ''}}>
+              <div className="option"  style={{backgroundColor: genreSelected === '37' ? '#535bf2' : ''}}>
                 <p>Western</p>
               </div> 
             </label>
@@ -268,6 +289,33 @@ const Movies = () => {
           
         </div>
       </div>  
+      <div className="movies_container">
+        <div className="movies_grid">
+          {data && data.map((movie) => {
+              return(
+                <div key={movie.id} className="movie">
+                  <Link className='movie_link' to={`/about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>
+                    <div className="poster" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`}}></div>
+                  </Link>  
+                  <div className="movie_info">
+                    <p>{movie.original_title ? movie.original_title : movie.name}</p>
+                    <div className='movie_props'>
+                      <p>2018</p>
+                      <div className="movie_actions">
+                        <button><i class="bi bi-heart-fill"></i></button>
+                        <button><i class="bi bi-plus-circle-fill"></i></button>
+                      </div>
+                      <div className="circular_progress" style={{background:`conic-gradient(#535bf2 ${(movie.vote_average * 360) / 10}deg, transparent 0deg)`}}>
+                        <span>{Math.round(movie.vote_average * 10) / 10}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )  
+            })}
+        </div>
+
+      </div>
     </div>
   )
 }

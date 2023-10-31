@@ -6,7 +6,11 @@ import useFetchData from '../../Hooks/useFetchData'
 import Carousel from '../../Components/Carousel'
 
 const Home = () => {
-  const {data: header_data} = useFetchData(true, null, "Now Playing", 5)
+  const {data: header_data} = useFetchData({
+  movie: true,
+  params: "Now Playing",
+  number: 5
+})
 
   const genres = [
     {
@@ -105,20 +109,6 @@ const Home = () => {
   //   console.log(headerPosition)
   // },[])
 
-  useEffect(() => {
-    const handleResize = () => {
-      setMoviesOnCarousel(Math.floor(((window.innerWidth - 85) / 4) / 100));
-    };
-  
-    window.addEventListener('resize', handleResize);
-  
-    handleResize();
-  
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   const handleRadioChange = (e) => {
     setHeaderPosition(e.target.value)
     setSelectedOption(e.target.id)
@@ -170,35 +160,35 @@ const Home = () => {
                 htmlFor="slide1" 
                 className='nav_header' 
                 id='s1'
-                style={{backgroundColor: selectedOption === 'slide1' ? '#efefef' : ""}}
+                style={{backgroundColor: selectedOption === 'slide1' ? '#535bf2' : ""}}
                 >
               </label>
               <label 
                 htmlFor="slide2" 
                 className='nav_header' 
                 id='s2'
-                style={{backgroundColor: selectedOption === 'slide2' ? '#efefef' : ""}}
+                style={{backgroundColor: selectedOption === 'slide2' ? '#535bf2' : ""}}
               >
                 </label>
               <label 
                 htmlFor="slide3" 
                 className='nav_header' 
                 id='s3'
-                style={{backgroundColor: selectedOption === 'slide3' ? '#efefef' : ""}}
+                style={{backgroundColor: selectedOption === 'slide3' ? '#535bf2' : ""}}
               >
                 </label>
               <label 
                 htmlFor="slide4" 
                 className='nav_header' 
                 id='s4'
-                style={{backgroundColor: selectedOption === 'slide4' ? '#efefef' : ""}}
+                style={{backgroundColor: selectedOption === 'slide4' ? '#535bf2' : ""}}
               >
                 </label>
               <label 
                 htmlFor="slide5" 
                 className='nav_header' 
                 id='s5'
-                style={{backgroundColor: selectedOption === 'slide5' ? '#efefef' : ""}}
+                style={{backgroundColor: selectedOption === 'slide5' ? '#535bf2' : ""}}
               >
                 </label>
             </div>
@@ -236,19 +226,19 @@ const Home = () => {
       <div className="carousel_container">
         <div className="carousel">
           <h3>Discover</h3>
-          <Carousel data = {useFetchData(true)} moviesOnCarousel = {moviesOnCarousel}  />
+          <Carousel data = {useFetchData({movie:true})} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
         <div className="carousel">
           <h3>Top Rated</h3>
-          <Carousel data = {useFetchData(true, null, "Top Rated")} moviesOnCarousel = {moviesOnCarousel}  />
+          <Carousel data = {useFetchData({movie: true, params: "Top Rated"})} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
         <div className="carousel">
           <h3>Popular series</h3>
-          <Carousel data = {useFetchData(false, null, "Popular")} moviesOnCarousel = {moviesOnCarousel}  />
+          <Carousel data = {useFetchData({movie:false, params: "Popular"})} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
         <div className="carousel">
           <h3>Now Playing</h3>
-          <Carousel data = {useFetchData(true, null, "Now Playing")} moviesOnCarousel = {moviesOnCarousel}  />
+          <Carousel data = {useFetchData({movie:true, params: "Now Playing"})} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
       </div>
       <div className="footer">
