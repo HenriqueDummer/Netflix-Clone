@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Link, Navigate } from 'react-router-dom'
 
 import Carousel from '../../Components/Carousel'
+import LoadingSpin from '../../Components/LoadingSpin'
 
 const About = () => {
     let {id} = useParams()
@@ -91,7 +92,7 @@ const About = () => {
            
             <div className="header_container">
                 <div className="header_wrapper">
-                    {data && 
+                    {data ? 
                         <div className='header_movie'  style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
                             <div className="header_filter2"></div>
                             <div className="movie_infos">
@@ -112,6 +113,8 @@ const About = () => {
                               
                             </div>
                         </div>
+                        :
+                        <LoadingSpin />
                     }
                 </div>  
             </div>
@@ -145,7 +148,7 @@ const About = () => {
           <div className="carousel_container">
             <div className="carousel">
               <h3>Resembling</h3>
-              <Carousel data = {useFetchData(true, true, null, 20, id)} moviesOnCarousel = {moviesOnCarousel}  />
+              <Carousel data = {useFetchData({movie:true, similar: true, number: 20, id:id})} moviesOnCarousel = {moviesOnCarousel}  />
             </div>
           </div>
         </div>

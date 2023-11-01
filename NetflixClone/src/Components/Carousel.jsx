@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import LoadingSpin from './LoadingSpin'
+
 const Carousel = (props) => {
 
     const {data} = props.data
@@ -66,7 +68,7 @@ const Carousel = (props) => {
         {carouselPosition != 0 &&<button id='move_left' onClick={() => moveCarouselLeft()}><i className='bi bi-arrow-left-short'></i></button>}
         {carouselPosition != maxWidth + carouselWitdh + 30 && <button id='move_right' onClick={() => moveCarouselRight()}><i className='bi bi-arrow-right-short'></i></button>}
         <div className="movies" style={{transform: `translateX(${carouselPosition}px)`}}>
-          {data && data.map((movie) => {
+          {data ? data.map((movie) => {
               return(
                 <div key={movie.id} className="movie">
                   <Link className='movie_link' onClick={goToTop} to={`/about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>
@@ -87,7 +89,10 @@ const Carousel = (props) => {
                   </div>
                 </div>
               )  
-            })}
+            })
+            :
+            <LoadingSpin />
+          }
         </div>
         
       </div>  

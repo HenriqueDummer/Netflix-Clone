@@ -16,6 +16,13 @@ body {
   position: relative;
   background-color: #10162f;
 }
+.app .spin_container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
 .app .navbar {
   position: fixed;
   left: 0;
@@ -599,6 +606,53 @@ body {
 }
 .app .movies_page .movies_container .movies_grid .movie .poster {
   height: 380px;
+}
+.app .movies_page .page_controller {
+  padding-block: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.app .movies_page .page_controller .controll button {
+  width: 120px;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid #535bf2;
+  color: #535bf2;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease all;
+}
+.app .movies_page .page_controller .controll button i {
+  color: #535bf2;
+  font-size: 28px;
+}
+.app .movies_page .page_controller .controll button:hover {
+  cursor: pointer;
+  gap: 5px;
+}
+.app .movies_page .page_controller .page ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+.app .movies_page .page_controller .page ul li {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #535bf2;
+  border-radius: 8px;
+}
+.app .movies_page .page_controller .current_page {
+  background-color: #535bf2;
 }
 
 /*# sourceMappingURL=styles.css.map */

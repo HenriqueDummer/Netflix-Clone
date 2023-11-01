@@ -83,6 +83,9 @@ const useFetchData = (props) => {
       }
     ]
 
+    const page = props.page ? `${props.page}` : '1'
+
+    console.log(props.page)
     const options = {
         method: 'GET',
         headers: {
@@ -93,7 +96,7 @@ const useFetchData = (props) => {
 
       const buildQuery = () => {
         if (props.similar) {
-          return `movie/${props.id}/similar?language=en-US&page=1`;
+          return `movie/${props.id}/similar?language=en-US&page=${page}}`;
         } else if (props.movie) {
           return buildMovieQuery();
         } else {
@@ -114,7 +117,7 @@ const useFetchData = (props) => {
             case null:
                 return 'discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
             default:
-                return `discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${props.params}`;
+                return `discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${props.params}`;
         }
       };
       
@@ -140,7 +143,7 @@ const useFetchData = (props) => {
           .then(response => setData(response.results.slice(0, props.number)))
           .catch(err => console.error(err));
 
-      }, [props.movie, props.params])
+      }, [props.movie, props.params, props.page])
 
 
       return {data}

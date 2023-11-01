@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom'
 import useFetchData from '../../Hooks/useFetchData'
 
 import Carousel from '../../Components/Carousel'
+import LoadingSpin from '../../Components/LoadingSpin'
 
 const Home = () => {
   const {data: header_data} = useFetchData({
-  movie: true,
-  params: "Now Playing",
-  number: 5
-})
+    movie: true,
+    params: "Now Playing",
+    number: 5
+  })
+
 
   const genres = [
     {
@@ -193,7 +195,7 @@ const Home = () => {
                 </label>
             </div>
         <div className="header_wrapper" style={{transform: `translateX(${headerPosition}%)`}}>
-          {header_data && header_data.map((movie) => {
+          {header_data ? header_data.map((movie) => {
             return(
               <div key={movie.id} className="header_movie" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`}}>
                 <div className="header_filter1"></div>
@@ -220,7 +222,10 @@ const Home = () => {
                 </div>
               </div>
             )
-          })}
+          })
+          :
+          <LoadingSpin />
+        }
         </div>
       </div>
       <div className="carousel_container">

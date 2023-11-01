@@ -1,19 +1,21 @@
 import React, { useDebugValue, useEffect } from 'react'
 import { useState } from 'react'
-import useFetchData from '../../Hooks/useFetchData'
 import { Link } from 'react-router-dom'
+import useFetchData from '../../Hooks/useFetchData'
+
+import LoadingSpin from '../../Components/LoadingSpin'
 
 const Movies = () => {
   const [genreSelected, setGenreSelected] = useState('12')
   const [filterPosition, setFilterPosition] = useState(0)
+  const [page, setPage] = useState(1)
+  const [data, setData] = useState()
   const {data : response} = useFetchData({
     movie: true,
     params: genreSelected,
-    number: 20
+    number: 20,
+    page: page
   })
-  
-  const [data, setData] = useState()
-  console.log(data)
 
   useEffect(() => {
     const loadData = async() => {
@@ -28,6 +30,7 @@ const Movies = () => {
 
   console.log(genreSelected)
   const handleChange = (e) => {
+    setData()
     setGenreSelected(e.target.id)
   }
 
@@ -47,6 +50,21 @@ const Movies = () => {
     }
   }
 
+  const goToTop = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+  const changePage = (next) => {
+    if(next && page < 5){
+      setPage(prev => prev + 1)
+      goToTop()
+    } else if(page > 1 && !next){
+      setPage(prev => prev - 1)
+      goToTop()
+    }
+
+  }
 
   return (
     <div className='movies_page'>
@@ -291,7 +309,7 @@ const Movies = () => {
       </div>  
       <div className="movies_container">
         <div className="movies_grid">
-          {data && data.map((movie) => {
+          {data ? data.map((movie) => {
               return(
                 <div key={movie.id} className="movie">
                   <Link className='movie_link' to={`/about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>
@@ -312,9 +330,29 @@ const Movies = () => {
                   </div>
                 </div>
               )  
-            })}
+            })
+          :
+            <LoadingSpin />
+          }
         </div>
 
+      </div>
+      <div className="page_controller">
+        <div className="controll">
+          <button onClick={() => changePage(false)}><i className='bi bi-arrow-left-short'></i>Prev</button>
+        </div>
+        <div className="page">
+          <ul>
+            <li className={page === 1 ? `current_page` : ''}>1</li>
+            <li className={page === 2 ? `current_page` : ''}>2</li>
+            <li className={page === 3 ? `current_page` : ''}>3</li>
+            <li className={page === 4 ? `current_page` : ''}>4</li>
+            <li className={page === 5 ? `current_page` : ''}>5</li>
+          </ul>
+        </div>
+        <div className="controll">
+          <button onClick={() => changePage(true)}>Next<i className='bi bi-arrow-right-short'></i></button>
+        </div>
       </div>
     </div>
   )
