@@ -239,7 +239,7 @@ const Home = () => {
         </div>
         <div className="carousel">
           <h3>Popular series</h3>
-          <Carousel data = {useFetchData({movie:false, params: "Popular"})} moviesOnCarousel = {moviesOnCarousel}  />
+          <Carousel data = {useFetchData({movie:false, params: "Top Rated"})} moviesOnCarousel = {moviesOnCarousel}  />
         </div>
         <div className="carousel">
           <h3>Now Playing</h3>

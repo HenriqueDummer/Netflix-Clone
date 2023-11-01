@@ -122,7 +122,7 @@ const useFetchData = (props) => {
       };
       
       const buildTVQuery = () => {
-        switch (options.status) {
+        switch (options.params) {
           case 'Airing Today':
             return 'tv/airing_today?language=en-US&page=1';
           case 'On The Air':
@@ -131,9 +131,11 @@ const useFetchData = (props) => {
             return 'tv/popular?language=en-US&region=US&page=2';
           case 'Top Rated':
             return 'tv/top_rated?language=en-US&page=1';
-          default:
+          case null:
             return 'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc';
-        }
+          default:
+            return `discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${props.params}`;
+          }
       };
       
       useEffect(() => {

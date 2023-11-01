@@ -69,10 +69,11 @@ const Carousel = (props) => {
         {carouselPosition != maxWidth + carouselWitdh + 30 && <button id='move_right' onClick={() => moveCarouselRight()}><i className='bi bi-arrow-right-short'></i></button>}
         <div className="movies" style={{transform: `translateX(${carouselPosition}px)`}}>
           {data ? data.map((movie) => {
+            console.log(movie.poster_path)
               return(
                 <div key={movie.id} className="movie">
                   <Link className='movie_link' onClick={goToTop} to={`/about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>
-                    <div className="poster" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`}}></div>
+                    <div className="poster" style={{backgroundImage: `url(${movie.poster_path != null ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : 'https://bitsofco.de/img/Qo5mfYDE5v-350.png'})`}}></div>
                   </Link>  
                   <div className="movie_info">
                     <p>{movie.original_title ? movie.original_title : movie.name}</p>
