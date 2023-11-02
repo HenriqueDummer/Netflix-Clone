@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import useFetchData from '../../Hooks/useFetchData'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Link, Navigate } from 'react-router-dom'
 
 import Carousel from '../../Components/Carousel'
 import LoadingSpin from '../../Components/LoadingSpin'
 
 const About = () => {
+
     let {id} = useParams()
     const isMovie = id.split('')[0] === "m" ? true : false
     id = id.split('').slice(1, id.length).join('')
+
     const [data, setData] = useState()
     const [castData, setCastData] = useState()
-    const [similarData, setSimilarData] = useState()
     const [trailerPath, setTrailerPath] = useState()
     const [videos, setVideos] = useState([])
-    const [moviesOnCarousel, setMoviesOnCarousel] = useState(Math.round(((window.innerWidth - 85) / 4) / 100))
 
+    const [moviesOnCarousel, setMoviesOnCarousel] = useState(Math.round(((window.innerWidth - 85) / 4) / 100))
+    
     const [watchingTrailer, setWatchingTrailer] = useState()
+    
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -78,7 +81,7 @@ const About = () => {
     <>
     {/* {fetchError && <Navigate to="/" />} */}
     <div className='watch'>
-        <Link to={'/'}><button id='go_back_btn'><i className='bi bi-arrow-left-short'></i></button></Link>
+        <button id='go_back_btn' onClick={() => navigate(-1)}><i className='bi bi-arrow-left-short'></i></button>
         {watchingTrailer && 
         <div className="trailer_container" onClick={() => setWatchingTrailer(false)}>
             <iframe className='trailer' src={`https://www.youtube.com/embed/${trailerPath}?rel=0&showinfo=0&autohide=1&controls=0&autoplay=1&disablekb=1&cc_load_policy=3&modestbranding=1`}
@@ -130,7 +133,6 @@ const About = () => {
 
             {castData &&
             <div className="cast_container">
-              
               <div className="cast_actors">
                 {castData.map((actor) => {
                   return(
@@ -145,15 +147,14 @@ const About = () => {
                 })}
               </div>
             </div>}
+
           <div className="carousel_container">
             <div className="carousel">
               <h3>Resembling</h3>
-              <Carousel data = {useFetchData({movie:true, similar: true, number: 20, id:id})} moviesOnCarousel = {moviesOnCarousel}  />
+              <Carousel data = {useFetchData({movie: isMovie ? true : false, similar: true, number: 20, id:id})} moviesOnCarousel = {moviesOnCarousel}  />
             </div>
           </div>
-        </div>
-        
-        
+        </div> 
     </>
     
   )

@@ -7,13 +7,18 @@ import Carousel from '../../Components/Carousel'
 import LoadingSpin from '../../Components/LoadingSpin'
 
 const Home = () => {
+
   const {data: header_data} = useFetchData({
     movie: true,
     params: "Now Playing",
     number: 5
   })
+  
+  const [headerPosition, setHeaderPosition] = useState(0)
+  const [moviesOnCarousel, setMoviesOnCarousel] = useState(Math.round(((window.innerWidth - 85) / 4) / 100))
+  const [selectedOption, setSelectedOption] = useState('slide1')
 
-
+  
   const genres = [
     {
       "id": 28,
@@ -92,24 +97,6 @@ const Home = () => {
       "name": "Western"
     }
   ]
-
-  const [headerPosition, setHeaderPosition] = useState(0)
-  const [moviesOnCarousel, setMoviesOnCarousel] = useState(Math.round(((window.innerWidth - 85) / 4) / 100))
-  const [selectedOption, setSelectedOption] = useState('slide1')
-  
-  // useEffect(() => {
-  //   const moveCarousel = () => {
-  //     if(selectedOption === "slide4"){
-  //       setSelectedOption('slide1')
-  //     } else {
-  //       setSelectedOption(`slide${selectedOption + 1}`)
-  //     }
-  //   }
-  //   const timer = setInterval(moveCarousel(), 5000)
-
-  //   return () => clearInterval(timer)
-  //   console.log(headerPosition)
-  // },[])
 
   const handleRadioChange = (e) => {
     setHeaderPosition(e.target.value)

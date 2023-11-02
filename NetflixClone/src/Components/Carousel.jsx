@@ -19,11 +19,6 @@ const Carousel = (props) => {
       maxWidth = data.length * - movieWidth
     }
 
-    console.log(`Movie Witdh => ${maxWidth}`)
-    console.log(`Carousel Witdh => ${carouselPosition}`)
-    console.log(`Movies on => ${moviesOnCarousel}`)
-
-
     useEffect(() => {
       const handleResize = () => {
         if(carouselWitdh){
