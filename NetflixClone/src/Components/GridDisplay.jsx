@@ -5,7 +5,7 @@ import useFetchData from "../Hooks/useFetchData"
 import LoadingSpin from "./LoadingSpin"
 
 const GridDisplay = (props) => {
-
+  console.log(props)
     const [genreSelected, setGenreSelected] = useState(props.isMovie ? '28' : '10759')
     const [page, setPage] = useState(1)
     const [data, setData] = useState()
@@ -13,7 +13,8 @@ const GridDisplay = (props) => {
       movie: props.isMovie,
       params: genreSelected,
       number: 20,
-      page: page
+      page: page,
+      search: props.query
     })
     const [filterPosition, setFilterPosition] = useState(0)
     const genres = props.genres
@@ -65,38 +66,40 @@ const GridDisplay = (props) => {
 
     return(
         <div className='movies_page'>
-            <div className="filters">
-                <div className="filters_controls">
-                {genres.map((genre) => {
-                    return(
-                    <input 
-                        type='radio'
-                        name={genre.name}
-                        id={genre.id}
-                        checked={genreSelected === genre.id} 
-                        onChange={(e) => handleChange(e)} 
-                    />
-                    )
-                })}
-                
-                </div>
-                <div className="filters_navigation" >
-                    {filterPosition != 0 && <button onClick={moveLeft} id='move_left'><i className='bi bi-arrow-left-short'></i></button>}
-                    {filterPosition != -2360 && <button onClick={moveRight} id='move_right'><i className='bi bi-arrow-right-short'></i></button>}
-                    <div className="filters_wrapper" style={{transform: `translateX(${filterPosition}px)`}}>
-                    {genres.map((genre) => {
-                        return (
-                        <label htmlFor={genre.id}>
-                            <div className="option"  style={{backgroundColor: genreSelected == genre.id ? '#535bf2' : ''}}>
-                            <p>{genre.name}</p>
-                            </div> 
-                        </label>
-                        )
-                    })}
-                    </div>
-                    
-                </div>
-            </div>  
+            {genres &&
+              <div className="filters">
+                  <div className="filters_controls">
+                  {genres.map((genre) => {
+                      return(
+                      <input 
+                          type='radio'
+                          name={genre.name}
+                          id={genre.id}
+                          checked={genreSelected === genre.id} 
+                          onChange={(e) => handleChange(e)} 
+                      />
+                      )
+                  })}
+                  
+                  </div>
+                  <div className="filters_navigation" >
+                      {filterPosition != 0 && <button onClick={moveLeft} id='move_left'><i className='bi bi-arrow-left-short'></i></button>}
+                      {filterPosition != -2360 && <button onClick={moveRight} id='move_right'><i className='bi bi-arrow-right-short'></i></button>}
+                      <div className="filters_wrapper" style={{transform: `translateX(${filterPosition}px)`}}>
+                      {genres.map((genre) => {
+                          return (
+                          <label htmlFor={genre.id}>
+                              <div className="option"  style={{backgroundColor: genreSelected == genre.id ? '#535bf2' : ''}}>
+                              <p>{genre.name}</p>
+                              </div> 
+                          </label>
+                          )
+                      })}
+                      </div>
+                      
+                  </div>
+              </div>  
+            }
             <div className="movies_container">
                 <div className="movies_grid">
                     {data ? data.map((movie) => {
@@ -126,23 +129,25 @@ const GridDisplay = (props) => {
                     }
                 </div>
             </div>
+            {!props.query &&
             <div className="page_controller">
-            <div className="controll">
-                <button onClick={() => changePage(false)}><i className='bi bi-arrow-left-short'></i>Prev</button>
+              <div className="controll">
+                  <button onClick={() => changePage(false)}><i className='bi bi-arrow-left-short'></i>Prev</button>
+              </div>
+              <div className="page">
+                  <ul>
+                  <li className={page === 1 ? `current_page` : ''}>1</li>
+                  <li className={page === 2 ? `current_page` : ''}>2</li>
+                  <li className={page === 3 ? `current_page` : ''}>3</li>
+                  <li className={page === 4 ? `current_page` : ''}>4</li>
+                  <li className={page === 5 ? `current_page` : ''}>5</li>
+                  </ul>
+              </div>
+              <div className="controll">
+                  <button onClick={() => changePage(true)}>Next<i className='bi bi-arrow-right-short'></i></button>
+              </div>
             </div>
-            <div className="page">
-                <ul>
-                <li className={page === 1 ? `current_page` : ''}>1</li>
-                <li className={page === 2 ? `current_page` : ''}>2</li>
-                <li className={page === 3 ? `current_page` : ''}>3</li>
-                <li className={page === 4 ? `current_page` : ''}>4</li>
-                <li className={page === 5 ? `current_page` : ''}>5</li>
-                </ul>
-            </div>
-            <div className="controll">
-                <button onClick={() => changePage(true)}>Next<i className='bi bi-arrow-right-short'></i></button>
-            </div>
-            </div>
+            }
         </div>
     )
 }

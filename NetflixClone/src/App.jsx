@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home'
 import Movies from './Pages/Movies/Movies'
 import Series from './Pages/Series/Series'
 import About from './Pages/About/About'
+import Search from './Pages/Search/Search'
 
 // Components
 import { Navbar } from './Components/Navbar'
@@ -22,6 +23,7 @@ function App() {
           <Route path='/movies' element={<Movies />} />
           <Route path='/series' element={<Series />} />
           <Route path='/about/:id' element={<About />} />
+          <Route path='/search' element={<Search />} />
         </Routes>
       </BrowserRouter>
     </div>

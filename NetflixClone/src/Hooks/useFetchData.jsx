@@ -22,7 +22,9 @@ const useFetchData = (props) => {
           } else {
             return `tv/${props.id}/similar?language=en-US&page=${page}}`;
           }
-        } else if (props.movie) {
+        } else if (props.search) {
+          return `search/multi?query=${props.search}&include_adult=false&language=en-US&page=1`
+        }else if (props.movie) {
           return buildMovieQuery();
         } else {
           return buildTVQuery();
@@ -70,7 +72,7 @@ const useFetchData = (props) => {
           .then(response => setData(response.results.slice(0, props.number)))
           .catch(err => console.error(err));
 
-      }, [props.movie, props.params, props.page])
+      }, [props.movie, props.params, props.page, props.search])
 
 
       return {data}

@@ -1,9 +1,5 @@
-import React, { useDebugValue, useEffect } from 'react'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import useFetchData from '../../Hooks/useFetchData'
+import React, { useEffect } from 'react'
 
-import LoadingSpin from '../../Components/LoadingSpin'
 import GridDisplay from '../../Components/GridDisplay'
 
 const Movies = () => {

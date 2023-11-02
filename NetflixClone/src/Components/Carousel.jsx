@@ -68,7 +68,7 @@ const Carousel = (props) => {
               return(
                 <div key={movie.id} className="movie">
                   <Link className='movie_link' onClick={goToTop} to={`/about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>
-                    <div className="poster" style={{backgroundImage: `url(${movie.poster_path != null ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : 'https://bitsofco.de/img/Qo5mfYDE5v-350.png'})`}}></div>
+                    <div className="poster" style={{backgroundImage: `url(${movie.poster_path != null ? `https://image.tmdb.org/t/p/original/${movie.poster_path}` : 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg'})`}}></div>
                   </Link>  
                   <div className="movie_info">
                     <p>{movie.original_title ? movie.original_title : movie.name}</p>

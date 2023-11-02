@@ -654,5 +654,37 @@ body {
 .app .movies_page .page_controller .current_page {
   background-color: #535bf2;
 }
+.app .search .search_container {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  align-items: center;
+}
+.app .search .search_container form {
+  width: 60%;
+  display: flex;
+  border-radius: 45px;
+  overflow: hidden;
+}
+.app .search .search_container form input {
+  height: 45px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding-left: 20px;
+  color: #242427;
+  font-size: 16px;
+  font-weight: 400;
+}
+.app .search .search_container form button {
+  width: 100px;
+  border: none;
+  background-color: #535bf2;
+  cursor: pointer;
+}
+.app .search .search_container form button i {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+}
 
 /*# sourceMappingURL=styles.css.map */
