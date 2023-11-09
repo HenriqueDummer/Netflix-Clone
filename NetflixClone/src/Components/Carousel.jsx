@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import LoadingSpin from './LoadingSpin'
+import 'react-multi-carousel/lib/styles.css'
 
 const Carousel = (props) => {
-
     const {data} = props.data
 
     const [moviesOnCarousel, setMoviesOnCarousel] = useState()
     const [carouselPosition, setCarouselPostition] = useState(0)
+    const screenWidth= window.innerWidth
     const carouselWitdh = document.getElementById("carousel_wrapper")?.offsetWidth
 
-    const movieWidth = 250
+    const movieWidth = 180
+    console.log(screenWidth)
 
     let maxWidth = 0
 
@@ -60,9 +62,12 @@ const Carousel = (props) => {
     
    return(
       <div className="carousel_wrapper" id='carousel_wrapper'>
-        {carouselPosition != 0 &&<button id='move_left' onClick={() => moveCarouselLeft()}><i className='bi bi-arrow-left-short'></i></button>}
-        {carouselPosition != maxWidth + carouselWitdh + 30 && <button id='move_right' onClick={() => moveCarouselRight()}><i className='bi bi-arrow-right-short'></i></button>}
-        <div className="movies" style={{transform: `translateX(${carouselPosition}px)`}}>
+        <div className="carousel_controls">
+          {carouselPosition != 0 && <button id='move_left' onClick={() => moveCarouselLeft()}><i className='bi bi-arrow-left-short'></i></button>}
+          {carouselPosition != maxWidth + carouselWitdh + 30 && <button id='move_right' onClick={() => moveCarouselRight()}><i className='bi bi-arrow-right-short'></i></button>}
+        </div>
+       
+        <div className='movies' style={{transform: `translateX(${carouselPosition}px)`}}>
           {data ? data.map((movie) => {
             console.log(movie.poster_path)
               return(

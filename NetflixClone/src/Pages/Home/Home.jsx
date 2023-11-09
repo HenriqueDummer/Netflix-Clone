@@ -184,7 +184,7 @@ const Home = () => {
         <div className="header_wrapper" style={{transform: `translateX(${headerPosition}%)`}}>
           {header_data ? header_data.map((movie) => {
             return(
-              <div key={movie.id} className="header_movie" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`}}>
+              <div key={movie.id} className="header_movie" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`}}>
                 <div className="header_filter1"></div>
                 <div className="header_filter2"></div>
                 <div className="header_movie_infos">

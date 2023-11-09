@@ -6,6 +6,9 @@ export const Navbar = () => {
 
   return (
     <>
+        <div className="nav_btn">
+            <i class="bi bi-list"></i>
+        </div>
         <nav className='navbar'>
             <div className="img_container">
                 <img src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" style={{width: '50px'}} alt="" />

@@ -23,6 +23,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.app .nav_btn {
+  display: none;
+}
 .app .navbar {
   position: fixed;
   left: 0;
@@ -223,7 +226,7 @@ body {
 .app .home .carousel_container, .app .watch .carousel_container {
   margin-inline: 30px;
   position: relative;
-  margin-top: -50px;
+  margin-top: -30px;
 }
 .app .home .carousel_container h3, .app .watch .carousel_container h3 {
   text-transform: uppercase;
@@ -235,23 +238,23 @@ body {
 .app .home .carousel_container .carousel, .app .watch .carousel_container .carousel {
   margin-bottom: 50px;
 }
-.app .home .carousel_container .carousel_wrapper, .app .watch .carousel_container .carousel_wrapper {
+.app .home .carousel_container .carousel .carousel_wrapper, .app .watch .carousel_container .carousel .carousel_wrapper {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
 }
-.app .home .carousel_container .carousel_wrapper .movies, .app .watch .carousel_container .carousel_wrapper .movies {
+.app .home .carousel_container .carousel .carousel_wrapper .movies, .app .watch .carousel_container .carousel .carousel_wrapper .movies {
   display: flex;
   gap: 30px;
   transition: 1.3s ease;
 }
-.app .home .carousel_container .carousel_wrapper #move_left, .app .watch .carousel_container .carousel_wrapper #move_left {
+.app .home .carousel_container .carousel .carousel_wrapper #move_left, .app .watch .carousel_container .carousel .carousel_wrapper #move_left {
   left: 0;
 }
-.app .home .carousel_container .carousel_wrapper #move_right, .app .watch .carousel_container .carousel_wrapper #move_right {
+.app .home .carousel_container .carousel .carousel_wrapper #move_right, .app .watch .carousel_container .carousel .carousel_wrapper #move_right {
   right: 0;
 }
-.app .home .carousel_container .carousel_wrapper #move_left, .app .home .carousel_container .carousel_wrapper #move_right, .app .watch .carousel_container .carousel_wrapper #move_left, .app .watch .carousel_container .carousel_wrapper #move_right {
+.app .home .carousel_container .carousel .carousel_wrapper #move_left, .app .home .carousel_container .carousel .carousel_wrapper #move_right, .app .watch .carousel_container .carousel .carousel_wrapper #move_left, .app .watch .carousel_container .carousel .carousel_wrapper #move_right {
   position: absolute;
   top: 0;
   z-index: 2;
@@ -261,14 +264,14 @@ body {
   border: none;
   transition: 0.2s;
 }
-.app .home .carousel_container .carousel_wrapper #move_left i, .app .home .carousel_container .carousel_wrapper #move_right i, .app .watch .carousel_container .carousel_wrapper #move_left i, .app .watch .carousel_container .carousel_wrapper #move_right i {
+.app .home .carousel_container .carousel .carousel_wrapper #move_left i, .app .home .carousel_container .carousel .carousel_wrapper #move_right i, .app .watch .carousel_container .carousel .carousel_wrapper #move_left i, .app .watch .carousel_container .carousel .carousel_wrapper #move_right i {
   font-size: 26px;
   transition: 0.4s ease;
 }
-.app .home .carousel_container .carousel_wrapper #move_left i, .app .home .carousel_container .carousel_wrapper #move_right i, .app .watch .carousel_container .carousel_wrapper #move_left i, .app .watch .carousel_container .carousel_wrapper #move_right i {
+.app .home .carousel_container .carousel .carousel_wrapper #move_left i, .app .home .carousel_container .carousel .carousel_wrapper #move_right i, .app .watch .carousel_container .carousel .carousel_wrapper #move_left i, .app .watch .carousel_container .carousel .carousel_wrapper #move_right i {
   transform: scale(2);
 }
-.app .home .carousel_container .carousel_wrapper #move_left:hover, .app .home .carousel_container .carousel_wrapper #move_right:hover, .app .watch .carousel_container .carousel_wrapper #move_left:hover, .app .watch .carousel_container .carousel_wrapper #move_right:hover {
+.app .home .carousel_container .carousel .carousel_wrapper #move_left:hover, .app .home .carousel_container .carousel .carousel_wrapper #move_right:hover, .app .watch .carousel_container .carousel .carousel_wrapper #move_left:hover, .app .watch .carousel_container .carousel .carousel_wrapper #move_right:hover {
   cursor: pointer;
   opacity: 1;
 }
@@ -685,6 +688,106 @@ body {
 .app .search .search_container form button i {
   color: rgba(255, 255, 255, 0.8);
   font-size: 18px;
+}
+@media (max-width: 1000px) {
+  .app .nav_btn {
+    display: inline;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    right: 20px;
+    top: 20px;
+    background-color: #535bf2;
+    border-radius: 10px;
+    box-shadow: 0 0 9px 7px rgba(0, 0, 0, 0.31);
+  }
+  .app .nav_btn i {
+    font-size: 40px;
+  }
+  .app .navbar {
+    display: none;
+  }
+  .app .home, .app .watch {
+    margin: 0;
+    max-width: 100%;
+  }
+  .app .home .header_container, .app .watch .header_container {
+    height: 720px;
+  }
+  .app .home .header_container .header_navigation .nav_header, .app .watch .header_container .header_navigation .nav_header {
+    width: 60px;
+  }
+  .app .home .header_container .header_wrapper .header_filter1, .app .watch .header_container .header_wrapper .header_filter1 {
+    display: none;
+  }
+  .app .home .header_container .header_wrapper .header_movie .header_movie_infos, .app .watch .header_container .header_wrapper .header_movie .header_movie_infos {
+    width: 100%;
+    margin-top: 150px;
+    min-width: 0;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+    padding-inline: 10px;
+    max-width: none;
+  }
+  .app .home .header_container .header_wrapper .header_movie .header_movie_infos h2, .app .watch .header_container .header_wrapper .header_movie .header_movie_infos h2 {
+    font-size: 28px;
+  }
+  .app .home .header_container .header_wrapper .header_movie .header_movie_infos p, .app .watch .header_container .header_wrapper .header_movie .header_movie_infos p {
+    display: none;
+  }
+  .app .home .header_container .header_wrapper .header_movie .header_movie_infos span, .app .watch .header_container .header_wrapper .header_movie .header_movie_infos span {
+    margin-top: 0;
+    justify-content: center;
+  }
+  .app .home .header_container .header_wrapper .header_movie .header_movie_infos #slash, .app .watch .header_container .header_wrapper .header_movie .header_movie_infos #slash {
+    display: none;
+  }
+  .app .home .carousel_container, .app .watch .carousel_container {
+    margin-inline: 10px;
+  }
+  .app .home .carousel_container h3, .app .watch .carousel_container h3 {
+    font-size: 22px;
+  }
+  .app .home .carousel_container .carousel, .app .watch .carousel_container .carousel {
+    margin-bottom: 95px;
+  }
+  .app .home .carousel_container .carousel .carousel_wrapper::-webkit-scrollbar-track, .app .watch .carousel_container .carousel .carousel_wrapper::-webkit-scrollbar-track {
+    background: #0a0e1f;
+  }
+  .app .home .carousel_container .carousel .carousel_wrapper, .app .watch .carousel_container .carousel .carousel_wrapper {
+    overflow-x: auto;
+  }
+  .app .home .carousel_container .carousel .carousel_wrapper .movies, .app .watch .carousel_container .carousel .carousel_wrapper .movies {
+    gap: 10px;
+  }
+  .app .home .carousel_container .carousel .carousel_wrapper #move_left, .app .home .carousel_container .carousel .carousel_wrapper #move_right, .app .watch .carousel_container .carousel .carousel_wrapper #move_left, .app .watch .carousel_container .carousel .carousel_wrapper #move_right {
+    display: none;
+  }
+  .app .home .movie, .app .watch .movie {
+    min-width: 180px;
+  }
+  .app .home .movie .poster, .app .watch .movie .poster {
+    height: 270px;
+  }
+  .app .home .movie .movie_info, .app .watch .movie .movie_info {
+    display: none;
+  }
+  .app .watch {
+    margin-left: 0;
+  }
+}
+@media (max-width: 650px) {
+  .app .home .movie, .app .watch .movie {
+    min-width: 120px;
+  }
+  .app .home .movie .poster, .app .watch .movie .poster {
+    height: 210px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
