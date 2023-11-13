@@ -24,6 +24,7 @@ body
         
     .nav_btn
         display: none
+
     .navbar
             position: fixed
             left: 0
@@ -35,6 +36,7 @@ body
             flex-direction: column
             align-items: center
             padding-top: 40px
+            z-index: 99
 
             .img_container
                 img
@@ -76,14 +78,29 @@ body
                             background-color: white
 
     
+    .home, .watch
+         .carousel_container
+            margin-inline: 30px
+            position: relative
+            margin-top: -30px
+
+            h3  
+                text-transform: uppercase
+                font-size: 24px
+                font-weight: 600
+                margin-left: 30px
+                margin-bottom: 10px
+            
+            .carousel
+                margin-bottom: 50px
+        
+
     .home
         margin-left: 65px
         width: 100%
         min-height: 100vh
         background-color: #10162F
         max-width: calc(100% - 65px)
-
-    .home, .watch
 
         .header_container::-webkit-scrollbar
             display: none
@@ -162,8 +179,6 @@ body
                         justify-content: center
                         padding-left: 100px
 
-
-
                         h2
                             text-transform: uppercase
                             font-size: 52px
@@ -229,78 +244,62 @@ body
         .carousel_container::-webkit-scrollbar
             display: none
             
-        .carousel_container
-            margin-inline: 30px
-            position: relative
-            margin-top: -30px
-
-            h3  
-                text-transform: uppercase
-                font-size: 24px
-                font-weight: 600
-                margin-left: 30px
-                margin-bottom: 10px
             
-            .carousel
-                margin-bottom: 50px
-            
-                .carousel_wrapper
-                    border-radius: 5px
-                    overflow: hidden
-                    position: relative   
+    
+    .carousel_wrapper
+        border-radius: 5px
+        overflow: hidden
+        position: relative 
 
-                    
-                    .movies
-                        display: flex
-                        gap: 30px
-                        transition: 1.3s ease
+        .carousel_controls
+            #move_left
+                left: 0
 
-                    #move_left
-                        left: 0
-
-                    #move_right
-                        right: 0
+            #move_right
+                right: 0
         
-                    #move_left, #move_right
-                        position: absolute
-                        top: 0
-                        z-index: 2
-                        background: rgba(16,22,47, 0.7)
-                        width: 55px
-                        height: 320px
-                        border: none
-                        transition: 0.2s
+            #move_left, #move_right
+                    position: absolute
+                    top: 0
+                    z-index: 2
+                    background: rgba(16,22,47, 0.7)
+                    width: 55px
+                    height: 320px
+                    border: none
+                    transition: 0.2s
         
-                        i
-                            font-size: 26px
-                            transition: 0.4s ease
+                    i
+                        font-size: 26px
+                        transition: 0.4s ease
                         
-                        i
-                            transform: scale(2)
+                    i
+                        transform: scale(2)
 
-                    #move_left:hover, #move_right:hover
-                        cursor: pointer 
-                        opacity: 1 
+            #move_left:hover, #move_right:hover
+                cursor: pointer   
 
-            .carousel_wrapper:hover  
-                .carousel_controls
-                    opacity: 1
+        .movies
+            display: flex
+            gap: 30px
+            transition: 1.3s ease
 
-    .movie
-        min-width: 220px
-        position: relative
+           
 
-        .movie_link
-            width: 100%
+        .movie
+                    min-width: 220px
+                    position: relative
 
-            .poster
-                        height: 320px
+                    .movie_link
                         width: 100%
-                        overflow: hidden
-                        border-radius: 5px
-                        background-size: cover
-                        background-position: center
-                        cursor: pointer
+
+                        .poster
+                                    height: 320px
+                                    width: 100%
+                                    overflow: hidden
+                                    border-radius: 5px
+                                    background-size: cover
+                                    background-position: center
+                                    cursor: pointer
 
         .movie_info
             width: 100%
@@ -334,8 +333,6 @@ body
 
                     i
                         color: #8f8e8e
-
-
     
     .circular_progress
         position: relative
@@ -711,29 +708,56 @@ body
                         color: rgba(255, 255, 255, 0.8) 
                         font-size: 18px
 
-    @media (max-width: 1000px)
-        .nav_btn
-            display: inline
-            position: fixed
-            width: 50px
-            height: 50px
-            display: flex
-            align-items: center
-            justify-content: center
-            z-index: 99
-            right: 20px
-            top: 20px
-            background-color: #535bf2
-            border-radius: 10px
-            box-shadow: 0 0 9px 7px rgba(0,0,0,0.31)
+@media (max-width: 1000px)
 
-            i
-                font-size: 40px
+    .app
+        
 
         .navbar
-            display: none 
+            top: 0
+            right: 0
+            left: auto
+            padding-top: 90px
+            transform: translateX(0%)
+            width: 140px
+            transition: 0.3s ease
 
-        .home, .watch
+            .nav_links_container
+                ul
+                    gap: 45px
+                    text-decoration: none
+
+                    li
+                        .nav_link
+                            text-decoration: none
+                            p
+                                display: inline
+                                text-decoration: none
+
+        .hidden
+            transform: translateX(100%)
+
+        .nav_btn
+                display: inline
+                position: fixed
+                width: 50px
+                height: 50px
+                display: flex
+                align-items: center
+                justify-content: center
+                z-index: 99
+                right: 20px
+                top: 20px
+                background-color: #535bf2
+                border-radius: 10px
+                box-shadow: 0 0 9px 7px rgba(0,0,0,0.31)
+                border: none
+                z-index: 999
+
+                i
+                    font-size: 40px
+
+        .home
             margin: 0
             max-width: 100%
 
@@ -743,8 +767,8 @@ body
                 .header_navigation
 
                     .nav_header
-                        width: 60px 
-                    
+                            width: 60px 
+                                
                 .header_wrapper
                     .header_filter1
                         display: none
@@ -752,14 +776,24 @@ body
                     .header_movie
 
                         .header_movie_infos
-                            width: 100%
-                            margin-top: 150px
+                            width: auto
+                            height: auto
+                            position: absolute
+                            top: auto
+                            bottom: 150px
                             min-width: 0
-                            padding: 0
+                            padding: 10px 20px
+                            left: 50%
+                            transform: translateX(-50%)
                             align-items: center
                             text-align: center
-                            padding-inline: 10px
                             max-width: none
+                            background: rgba(0, 0, 0, 0.3)
+                            border-radius: 16px
+                            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+                            backdrop-filter: blur(5px)
+                            -webkit-backdrop-filter: blur(5px)
+                            border: 1px solid rgba(0, 0, 0, 0.3)
 
                             h2
                                 font-size: 28px
@@ -774,7 +808,6 @@ body
                             #slash
                                 display: none
 
-                            .about_btn
 
             .carousel_container
                 margin-inline: 10px
@@ -782,42 +815,55 @@ body
                 h3
                     font-size: 22px
 
+        .home, .watch
+            .carousel_container
+
                 .carousel
                     margin-bottom:95px
 
-                    .carousel_wrapper::-webkit-scrollbar-track
-                        background: #0a0e1f
-
                     .carousel_wrapper
-                        overflow-x: auto
-                        
+                            overflow-x: auto
 
-                        .movies
-                            gap: 10px
-
+                    .carousel_controls
                         #move_left, #move_right
                             display: none
 
-            
-            .movie
-                min-width: 180px
+                                                
+                    .movies
+                        gap: 10px
+                       
+                        .movie
+                            min-width: 180px
 
-                .poster
-                    height: 270px
+                            .movie_link
+                                .poster
+                                    height: 270px
 
-                .movie_info
-                    display: none
+                            .movie_info
+                                display: none
 
-        .watch
-            margin-left: 0
+                            .watch      
+                                margin-left: 0
 
-    @media (max-width: 650px)
-        .home, .watch
-            .movie
-                min-width: 120px
+                                .header_movie
+                                    height: auto
 
-                .poster
-                    height: 210px
+
+
+@media (max-width: 650px)
+    .app
+
+    .home, .watch
+        .carousel_container
+            .carousel
+                .carousel_wrapper
+                    .movies
+                        .movie
+                            min-width: 120px
+                            
+                            .movie_link
+                                .poster
+                                    height: 210px
 
         
     

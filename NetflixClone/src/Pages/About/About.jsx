@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import Carousel from '../../Components/Carousel'
 import LoadingSpin from '../../Components/LoadingSpin'
+import AboutHeader from '../../Components/AboutHeader'
 
 const About = () => {
 
@@ -11,7 +12,6 @@ const About = () => {
     const isMovie = id.split('')[0] === "m" ? true : false
     id = id.split('').slice(1, id.length).join('')
 
-    const [data, setData] = useState()
     const [castData, setCastData] = useState()
     const [trailerPath, setTrailerPath] = useState()
     const [videos, setVideos] = useState([])
@@ -33,10 +33,6 @@ const About = () => {
           };
       
           try {
-            const response = await fetch(`https://api.themoviedb.org/3/${isMovie ? "movie" : "tv"}/${id}?language=en-US`, options);
-            const movieData = await response.json();
-            setData(movieData);
-      
             const videosResponse = await fetch(`https://api.themoviedb.org/3/${isMovie ? "movie" : "tv"}/${id}/videos?language=en-US`, options);
             const videosData = await videosResponse.json();
             setVideos(videosData.results);
@@ -83,44 +79,18 @@ const About = () => {
     <div className='watch'>
         <button id='go_back_btn' onClick={() => navigate(-1)}><i className='bi bi-arrow-left-short'></i></button>
         {watchingTrailer && 
-        <div className="trailer_container" onClick={() => setWatchingTrailer(false)}>
-            <iframe className='trailer' src={`https://www.youtube.com/embed/${trailerPath}?rel=0&showinfo=0&autohide=1&controls=0&autoplay=1&disablekb=1&cc_load_policy=3&modestbranding=1`}
-                  frameborder="0"
-                  showinfo="0"
-              >
-            </iframe>
-            <button id='close_trailer'><i class="bi bi-x-circle-fill"></i></button>
-        </div>
+          <div className="trailer_container" onClick={() => setWatchingTrailer(false)}>
+              <iframe className='trailer' src={`https://www.youtube.com/embed/${trailerPath}?rel=0&showinfo=0&autohide=1&controls=0&autoplay=1&disablekb=1&cc_load_policy=3&modestbranding=1`}
+                    frameborder="0"
+                    showinfo="0"
+                >
+              </iframe>
+              <button id='close_trailer'><i class="bi bi-x-circle-fill"></i></button>
+          </div>
         }
+      
            
-            <div className="header_container">
-                <div className="header_wrapper">
-                    {data ? 
-                        <div className='header_movie'  style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`}}>
-                            <div className="header_filter2"></div>
-                            <div className="movie_infos">
-                              <div className="infos_text">
-                              <h2>{data.original_title ? data.original_title : data.name}</h2>
-                                <p>{data.overview}</p>
-                                <span>
-                                    <p>{data.release_date ? data.release_date.split('').slice(0,4).join('') : data.first_air_date.split('').slice(0,4).join('')}</p>
-                                    <div id='slash'></div>
-                                    {data.genres.map((genre) => <span>{genre.name}</span>)}
-                                </span>
-                              </div>
-                              <div className="vote_container">
-                                <div className="circular_progress" style={{background:`conic-gradient(#535bf2 ${(data.vote_average * 360) / 10}deg, transparent 0deg)`}}>
-                                  <span>{Math.round(data.vote_average * 10) / 10}</span>
-                                </div>
-                              </div>
-                              
-                            </div>
-                        </div>
-                        :
-                        <LoadingSpin />
-                    }
-                </div>  
-            </div>
+        <AboutHeader isMovie={isMovie} id={id}/>   
             {videos.length != 0 && 
             <div className="link_trailer_container">
               <button onClick={() => setWatchingTrailer(true)}>
