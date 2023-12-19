@@ -6,7 +6,7 @@ import { useState } from 'react'
 export const Navbar = () => {
 
     const windowSize = window.innerWidth
-    const [navVisible, setNavVisible] = useState(windowSize > 1000 ? false : true)
+    const [navVisible, setNavVisible] = useState(false)
 
     const handleClick = () => {
         setNavVisible(prev => !prev)

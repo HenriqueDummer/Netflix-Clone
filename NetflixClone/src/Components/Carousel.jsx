@@ -12,8 +12,8 @@ const Carousel = (props) => {
     const screenWidth= window.innerWidth
     const carouselWitdh = document.getElementById("carousel_wrapper")?.offsetWidth
 
-    const movieWidth = 180
-    console.log(screenWidth)
+    const movieWidth = 250
+    console.log(carouselWitdh)
 
     let maxWidth = 0
 
@@ -69,7 +69,6 @@ const Carousel = (props) => {
        
         <div className='movies' style={{transform: `translateX(${carouselPosition}px)`}}>
           {data ? data.map((movie) => {
-            console.log(movie.poster_path)
               return(
                 <div key={movie.id} className="movie">
                   <Link className='movie_link' onClick={goToTop} to={`/about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>

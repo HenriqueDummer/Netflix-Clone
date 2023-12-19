@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const useFetchData = (props) => {
 
     const [data, setData] = useState()
-    console.log(props)
+    console.log(data)
     const page = props.page ? `${props.page}` : '1'
 
     console.log(props.page)

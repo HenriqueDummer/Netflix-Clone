@@ -3,11 +3,13 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import useFetchData from '../Hooks/useFetchData'
+import useScreenWidth from '../Hooks/useScreenWitdh'
 
 import LoadingSpin from './LoadingSpin'
 
 const HomeHeader = () => {
 
+    const screenWidth = useScreenWidth()
     const {data: header_data} = useFetchData({
         movie: true,
         params: "Now Playing",
@@ -142,7 +144,7 @@ const HomeHeader = () => {
                 checked={selectedOption === 'slide5'}
                 onChange={(e) => handleRadioChange(e)}/>
             </div>
-            <div className="header_navigation">
+          <div className="header_navigation">
               <label 
                 htmlFor="slide1" 
                 className='nav_header' 
@@ -179,33 +181,33 @@ const HomeHeader = () => {
               >
                 </label>
             </div>
-        <div className="header_wrapper" style={{transform: `translateX(${headerPosition}%)`}}>
+          <div className="header_wrapper" style={{transform: `translateX(${headerPosition}%)`}}>
           {header_data ? header_data.map((movie) => {
             return(
-              <div key={movie.id} className="header_movie" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})`}}>
+              <div key={movie.id} className="header_movie" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${screenWidth  > 1000 ? movie.backdrop_path : movie.poster_path})`}}>
                 <div className="header_filter1"></div>
                 <div className="header_filter2"></div>
                 <div className="header_movie_infos">
                   <h2>{movie.original_title}</h2>
                   <p>{movie.overview}</p>
-                  <span>
+                  <div className='details'>
                     <p>{movie.release_date.split('').slice(0,4)}</p>
                     <div id='slash'></div>
-                    {movie.genre_ids.map((genre_id) => {
-                      return(
-                        genres.map((genre) => {
-                          if(genre.id === genre_id){
-                            return(
-                              <span>{genre.name}</span>
-                            )
-                          }
-                        })
-                      )
-                    })}
-                  </span>
-                  <Link className='about_btn' to={`about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>ABOUT</Link>
+                      {movie.genre_ids.slice(0, 3).map((genre_id) => {
+                        return(
+                          genres.map((genre) => {
+                            if(genre.id === genre_id){
+                              return(
+                                <span>{genre.name}</span>
+                              )
+                            }
+                          })
+                        )
+                      })}
+                    </div>
+                    <Link className='about_btn' to={`about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>ABOUT</Link>
+                  </div>
                 </div>
-              </div>
             )
           })
           :

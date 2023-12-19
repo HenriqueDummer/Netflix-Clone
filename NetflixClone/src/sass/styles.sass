@@ -78,11 +78,70 @@ body
                             background-color: white
 
     
-    .home, .watch
-         .carousel_container
-            margin-inline: 30px
+    .home, .about
+        .header_container
+            width: 100%
+            height: 850px
+            overflow: hidden
             position: relative
-            margin-top: -30px
+                  
+            .header_wrapper
+                height: 100%
+                position: relative
+                display: flex
+                transition: 1s ease
+
+                .header_movie
+                    height: 100%
+                    min-width: 100%
+                    background-size: cover
+                    background-position: center
+                    position: relative
+
+                    // .header_movie_infos
+                    //     .movie_props
+                    //         display: flex
+                    //         gap: 5px
+                    //         margin-block: 20px
+                    //         align-items: center
+
+                    //         p
+                    //             font-size: 16px
+                    //             font-weight: 600
+
+                    //         #slash
+                    //             width: 1px
+                    //             height: 100%
+                    //             background-color: white
+
+                    //         span
+                    //             text-transform: uppercase
+                    //             font-size: 14px
+                    //             font-weight: 500
+                    //             border: 1px solid white
+                    //             padding-block: 3px
+                    //             padding-inline: 10px
+                    //             border-radius: 4px 
+
+
+                    .header_filter1
+                        position: absolute    
+                        left: 0
+                        top: 0
+                        width: 100%
+                        height: 100%
+                        background: rgb(2,0,36)
+                        background: linear-gradient(90deg, rgba(16,22,47,1) 0%, rgba(63,94,251,0) 60%)
+                    
+                    .header_filter2
+                        position: absolute    
+                        left: 0
+                        top: 0
+                        width: 100%
+                        height: 100%
+                        background: rgb(2,0,36)
+                        background: linear-gradient(0deg, rgba(16,22,47,1) 0%, rgba(63,94,251,0) 50%)
+                    
 
             h3  
                 text-transform: uppercase
@@ -90,10 +149,11 @@ body
                 font-weight: 600
                 margin-left: 30px
                 margin-bottom: 10px
-            
+                    
             .carousel
-                margin-bottom: 50px
-        
+                 margin-bottom: 50px
+                        
+                
 
     .home
         margin-left: 65px
@@ -146,25 +206,7 @@ body
                     background-size: cover
                     background-position: center
                     position: relative
-
-                    .header_filter1
-                        position: absolute    
-                        left: 0
-                        top: 0
-                        width: 100%
-                        height: 100%
-                        background: rgb(2,0,36)
-                        background: linear-gradient(90deg, rgba(16,22,47,1) 0%, rgba(63,94,251,0) 60%)
-                    
-                    .header_filter2
-                        position: absolute    
-                        left: 0
-                        top: 0
-                        width: 100%
-                        height: 100%
-                        background: rgb(2,0,36)
-                        background: linear-gradient(0deg, rgba(16,22,47,1) 0%, rgba(63,94,251,0) 50%)
-                    
+                 
 
                     .header_movie_infos
                         position: absolute
@@ -190,19 +232,14 @@ body
                             font-weight: 400
                             color: rgba(255, 255, 255, 0.7)
 
-                        span
+                        .details
                             display: flex
                             margin-top: 20px
                             align-items: center
                             margin-bottom: 20px
 
-                            #slash
-                                height: 25px
-                                background-color: rgba(255, 255, 255, 0.7)
-                                border: none
-                                width: 2px
-                                margin-right: 10px
 
+                                
                             span
                                 text-transform: uppercase
                                 font-size: 13px
@@ -243,45 +280,49 @@ body
                         
         .carousel_container::-webkit-scrollbar
             display: none
+               
+    .carousel_container
+        margin-inline: 20px
+        h3
+            font-size: 24px
+            margin-left: 25px
+            padding-block: 10px 
+        .carousel_wrapper
+            border-radius: 5px
+            overflow: hidden
+            position: relative 
+
+            .carousel_controls
+                #move_left
+                    left: 0
+
+                #move_right
+                    right: 0
             
+                #move_left, #move_right
+                        position: absolute
+                        top: 0
+                        z-index: 2
+                        background: rgba(16,22,47, 0.7)
+                        width: 55px
+                        height: 320px
+                        border: none
+                        transition: 0.2s
             
-    
-    .carousel_wrapper
-        border-radius: 5px
-        overflow: hidden
-        position: relative 
+                        i
+                            font-size: 26px
+                            transition: 0.4s ease
+                            
+                        i
+                            transform: scale(2)
 
-        .carousel_controls
-            #move_left
-                left: 0
+                #move_left:hover, #move_right:hover
+                    cursor: pointer   
 
-            #move_right
-                right: 0
-        
-            #move_left, #move_right
-                    position: absolute
-                    top: 0
-                    z-index: 2
-                    background: rgba(16,22,47, 0.7)
-                    width: 55px
-                    height: 320px
-                    border: none
-                    transition: 0.2s
-        
-                    i
-                        font-size: 26px
-                        transition: 0.4s ease
-                        
-                    i
-                        transform: scale(2)
-
-            #move_left:hover, #move_right:hover
-                cursor: pointer   
-
-        .movies
-            display: flex
-            gap: 30px
-            transition: 1.3s ease
+            .movies
+                display: flex
+                gap: 30px
+                transition: 1.3s ease
 
            
 
@@ -357,7 +398,7 @@ body
         border-radius: 50%
         background-color: #10162f
 
-    .watch
+    .about
         margin-left: 65px
         min-height: 100vh
         position: relative
@@ -396,22 +437,21 @@ body
         #go_back_btn
             position: fixed
             background-color: transparent
-            top: 15px
+            top: 20px
             left: 85px
             z-index: 3
             font-size: 40px
             width: 45px
             height: 45px
-            border-radius: 50%
+            border-radius: 10px
             border: none
             display: flex
             justify-content: center
             align-items: center
             transition: 0.2s ease
-
-        #go_back_btn:hover
-            background-color: rgba(0, 0, 0, 0.8)
+            background-color: rgba(0, 0, 0, 0.4)
             cursor: pointer
+
             
         .movie_infos
             position: absolute
@@ -451,7 +491,7 @@ body
                     font-weight: 400
                     color: rgba(255, 255, 255, 0.7)
 
-                span
+                .details
                     display: flex
                     margin-top: 20px
                     align-items: center
@@ -469,17 +509,14 @@ body
                         letter-spacing: 1.5px
                         font-weight: 500
                         padding: 1px 6px
-                        border: 2px solid #535bf2
+                        border: 2px solid rgba(255, 255, 255, 0.7)
                         color: rgba(255, 255, 255, 0.7)
                         border-radius: 2px
                         margin: 0
                         margin-right: 5px
                         text-align: center
                                 
-                    p
-                        color: rgba(255, 255, 255, 0.8)
-                        font-weight: 700
-                        margin-right: 10px
+                    
 
         .link_trailer_container
             width: 100%
@@ -711,14 +748,13 @@ body
 @media (max-width: 1000px)
 
     .app
-        
 
         .navbar
             top: 0
             right: 0
             left: auto
             padding-top: 90px
-            transform: translateX(0%)
+            transform: translateX(0)
             width: 140px
             transition: 0.3s ease
 
@@ -756,6 +792,45 @@ body
 
                 i
                     font-size: 40px
+       
+        .home, .about
+            .carousel_container
+                margin-inline: 10px
+
+                h3
+                    margin-left: 10px
+                    margin-bottom: 5px
+                    font-size: 22px
+
+                .carousel
+                    margin-bottom:50px
+
+                    .carousel_wrapper
+                            overflow-x: auto
+
+                    .carousel_controls
+                        #move_left, #move_right
+                            display: none
+
+                                                
+                    .movies
+                        gap: 10px
+                       
+                        .movie
+                            min-width: 180px
+
+                            .movie_link
+                                .poster
+                                    height: 270px
+
+                            .movie_info
+                                display: none
+
+                            .watch      
+                                margin-left: 0
+
+                                .header_movie
+                                    height: auto
 
         .home
             margin: 0
@@ -787,7 +862,7 @@ body
                             transform: translateX(-50%)
                             align-items: center
                             text-align: center
-                            max-width: none
+                            max-width: 90%
                             background: rgba(0, 0, 0, 0.3)
                             border-radius: 16px
                             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
@@ -808,52 +883,88 @@ body
                             #slash
                                 display: none
 
+                            
 
-            .carousel_container
-                margin-inline: 10px
+                            
 
-                h3
-                    font-size: 22px
+        .about
+            margin: 0
 
-        .home, .watch
-            .carousel_container
+            #go_back_btn
+                left: 30px
 
-                .carousel
-                    margin-bottom:95px
+            .header_container
+                height: auto
+                overflow: visible
 
-                    .carousel_wrapper
-                            overflow-x: auto
+                .header_wrapper
+                    height: auto
 
-                    .carousel_controls
-                        #move_left, #move_right
-                            display: none
+                    .header_movie
+                        min-height: 800px
+                        
+                    .movie_infos
+                        width: auto
+                        height: auto
+                        bottom: -100px
+                        max-width: 80%
+                        padding: 10px 20px
+                        left: 50%
+                        transform: translateX(-50%)
+                        text-align: center
+                        flex-direction: column
+                        background: rgba(0, 0, 0, 0.01)
+                        border-radius: 16px
+                        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+                        backdrop-filter: blur(5px)
+                        -webkit-backdrop-filter: blur(5px)
+                        border: 1px solid rgba(0, 0, 0, 0.3)
 
-                                                
-                    .movies
-                        gap: 10px
-                       
-                        .movie
-                            min-width: 180px
+                        // width: auto
+                        //     height: auto
+                        //     position: absolute
+                        //     top: auto
+                        //     bottom: 150px
+                        //     min-width: 0
+                        //     padding: 10px 20px
+                        //     left: 50%
+                        //     transform: translateX(-50%)
+                        //     align-items: center
+                        //     text-align: center
+                        //     max-width: none
+                        //     background: rgba(0, 0, 0, 0.3)
+                        //     border-radius: 16px
+                        //     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+                        //     backdrop-filter: blur(5px)
+                        //     -webkit-backdrop-filter: blur(5px)
+                        //     border: 1px solid rgba(0, 0, 0, 0.3)
 
-                            .movie_link
-                                .poster
-                                    height: 270px
+                        .infos_text
+                            padding-right: 0px
 
-                            .movie_info
-                                display: none
+                        .details
+                           
 
-                            .watch      
-                                margin-left: 0
+                        h2
+                            font-size: 38px
 
-                                .header_movie
-                                    height: auto
-
-
+                        .vote_container
+                            padding-block: 8px
+                            .circular_progress
+                                width: 70px
+                                height: 70px
+                                    
+                                span 
+                                    font-size: 22px
+                            
+            .link_trailer_container
+                margin-top: 150px               
+                        
 
 @media (max-width: 650px)
     .app
 
-    .home, .watch
+    .home, .about
         .carousel_container
             .carousel
                 .carousel_wrapper

@@ -76,7 +76,7 @@ const About = () => {
   return (
     <>
     {/* {fetchError && <Navigate to="/" />} */}
-    <div className='watch'>
+    <div className='about'>
         <button id='go_back_btn' onClick={() => navigate(-1)}><i className='bi bi-arrow-left-short'></i></button>
         {watchingTrailer && 
           <div className="trailer_container" onClick={() => setWatchingTrailer(false)}>
@@ -88,10 +88,10 @@ const About = () => {
               <button id='close_trailer'><i class="bi bi-x-circle-fill"></i></button>
           </div>
         }
-      
-           
-        <AboutHeader isMovie={isMovie} id={id}/>   
-            {videos.length != 0 && 
+
+        <AboutHeader isMovie={isMovie} id={id}/> 
+
+          {videos.length != 0 && 
             <div className="link_trailer_container">
               <button onClick={() => setWatchingTrailer(true)}>
                 <div>
@@ -99,9 +99,10 @@ const About = () => {
                   <i class='bx bx-movie-play' ></i>
                 </div>  
               </button>  
-            </div>}
+            </div>
+          }
 
-            {castData &&
+          {castData &&
             <div className="cast_container">
               <div className="cast_actors">
                 {castData.map((actor) => {
@@ -116,7 +117,8 @@ const About = () => {
                   )
                 })}
               </div>
-            </div>}
+            </div>
+          }
 
           <div className="carousel_container">
             <div className="carousel">

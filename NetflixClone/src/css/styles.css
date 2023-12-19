@@ -77,19 +77,51 @@ body {
   height: 2px;
   background-color: white;
 }
-.app .home .carousel_container, .app .watch .carousel_container {
-  margin-inline: 30px;
+.app .home .header_container, .app .about .header_container {
+  width: 100%;
+  height: 850px;
+  overflow: hidden;
   position: relative;
-  margin-top: -30px;
 }
-.app .home .carousel_container h3, .app .watch .carousel_container h3 {
+.app .home .header_container .header_wrapper, .app .about .header_container .header_wrapper {
+  height: 100%;
+  position: relative;
+  display: flex;
+  transition: 1s ease;
+}
+.app .home .header_container .header_wrapper .header_movie, .app .about .header_container .header_wrapper .header_movie {
+  height: 100%;
+  min-width: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.app .home .header_container .header_wrapper .header_movie .header_filter1, .app .about .header_container .header_wrapper .header_movie .header_filter1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgb(16, 22, 47) 0%, rgba(63, 94, 251, 0) 60%);
+}
+.app .home .header_container .header_wrapper .header_movie .header_filter2, .app .about .header_container .header_wrapper .header_movie .header_filter2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(0deg, rgb(16, 22, 47) 0%, rgba(63, 94, 251, 0) 50%);
+}
+.app .home .header_container h3, .app .about .header_container h3 {
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 600;
   margin-left: 30px;
   margin-bottom: 10px;
 }
-.app .home .carousel_container .carousel, .app .watch .carousel_container .carousel {
+.app .home .header_container .carousel, .app .about .header_container .carousel {
   margin-bottom: 50px;
 }
 .app .home {
@@ -144,24 +176,6 @@ body {
   background-position: center;
   position: relative;
 }
-.app .home .header_container .header_wrapper .header_movie .header_filter1 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(90deg, rgb(16, 22, 47) 0%, rgba(63, 94, 251, 0) 60%);
-}
-.app .home .header_container .header_wrapper .header_movie .header_filter2 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(0deg, rgb(16, 22, 47) 0%, rgba(63, 94, 251, 0) 50%);
-}
 .app .home .header_container .header_wrapper .header_movie .header_movie_infos {
   position: absolute;
   width: 50%;
@@ -186,20 +200,13 @@ body {
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
 }
-.app .home .header_container .header_wrapper .header_movie .header_movie_infos span {
+.app .home .header_container .header_wrapper .header_movie .header_movie_infos .details {
   display: flex;
   margin-top: 20px;
   align-items: center;
   margin-bottom: 20px;
 }
-.app .home .header_container .header_wrapper .header_movie .header_movie_infos span #slash {
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border: none;
-  width: 2px;
-  margin-right: 10px;
-}
-.app .home .header_container .header_wrapper .header_movie .header_movie_infos span span {
+.app .home .header_container .header_wrapper .header_movie .header_movie_infos .details span {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 1.5px;
@@ -211,7 +218,7 @@ body {
   margin: 0;
   margin-right: 5px;
 }
-.app .home .header_container .header_wrapper .header_movie .header_movie_infos span p {
+.app .home .header_container .header_wrapper .header_movie .header_movie_infos .details p {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 700;
   margin-right: 10px;
@@ -239,18 +246,26 @@ body {
 .app .home .carousel_container::-webkit-scrollbar {
   display: none;
 }
-.app .carousel_wrapper {
+.app .carousel_container {
+  margin-inline: 20px;
+}
+.app .carousel_container h3 {
+  font-size: 24px;
+  margin-left: 25px;
+  padding-block: 10px;
+}
+.app .carousel_container .carousel_wrapper {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
 }
-.app .carousel_wrapper .carousel_controls #move_left {
+.app .carousel_container .carousel_wrapper .carousel_controls #move_left {
   left: 0;
 }
-.app .carousel_wrapper .carousel_controls #move_right {
+.app .carousel_container .carousel_wrapper .carousel_controls #move_right {
   right: 0;
 }
-.app .carousel_wrapper .carousel_controls #move_left, .app .carousel_wrapper .carousel_controls #move_right {
+.app .carousel_container .carousel_wrapper .carousel_controls #move_left, .app .carousel_container .carousel_wrapper .carousel_controls #move_right {
   position: absolute;
   top: 0;
   z-index: 2;
@@ -260,29 +275,29 @@ body {
   border: none;
   transition: 0.2s;
 }
-.app .carousel_wrapper .carousel_controls #move_left i, .app .carousel_wrapper .carousel_controls #move_right i {
+.app .carousel_container .carousel_wrapper .carousel_controls #move_left i, .app .carousel_container .carousel_wrapper .carousel_controls #move_right i {
   font-size: 26px;
   transition: 0.4s ease;
 }
-.app .carousel_wrapper .carousel_controls #move_left i, .app .carousel_wrapper .carousel_controls #move_right i {
+.app .carousel_container .carousel_wrapper .carousel_controls #move_left i, .app .carousel_container .carousel_wrapper .carousel_controls #move_right i {
   transform: scale(2);
 }
-.app .carousel_wrapper .carousel_controls #move_left:hover, .app .carousel_wrapper .carousel_controls #move_right:hover {
+.app .carousel_container .carousel_wrapper .carousel_controls #move_left:hover, .app .carousel_container .carousel_wrapper .carousel_controls #move_right:hover {
   cursor: pointer;
 }
-.app .carousel_wrapper .movies {
+.app .carousel_container .carousel_wrapper .movies {
   display: flex;
   gap: 30px;
   transition: 1.3s ease;
 }
-.app .carousel_wrapper .movie {
+.app .carousel_container .movie {
   min-width: 220px;
   position: relative;
 }
-.app .carousel_wrapper .movie .movie_link {
+.app .carousel_container .movie .movie_link {
   width: 100%;
 }
-.app .carousel_wrapper .movie .movie_link .poster {
+.app .carousel_container .movie .movie_link .poster {
   height: 320px;
   width: 100%;
   overflow: hidden;
@@ -291,37 +306,37 @@ body {
   background-position: center;
   cursor: pointer;
 }
-.app .carousel_wrapper .movie_info {
+.app .carousel_container .movie_info {
   width: 100%;
   margin-top: 6px;
 }
-.app .carousel_wrapper .movie_info p {
+.app .carousel_container .movie_info p {
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
 }
-.app .carousel_wrapper .movie_info .movie_props {
+.app .carousel_container .movie_info .movie_props {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-block: 5px;
 }
-.app .carousel_wrapper .movie_info .movie_props p {
+.app .carousel_container .movie_info .movie_props p {
   font-size: 15px;
   font-weight: 400;
   color: #8f8e8e;
 }
-.app .carousel_wrapper .movie_info .movie_props .movie_actions {
+.app .carousel_container .movie_info .movie_props .movie_actions {
   display: flex;
   gap: 15px;
 }
-.app .carousel_wrapper .movie_info .movie_props .movie_actions button {
+.app .carousel_container .movie_info .movie_props .movie_actions button {
   background-color: transparent;
   border: none;
   cursor: pointer;
   font-size: 15px;
 }
-.app .carousel_wrapper .movie_info .movie_props .movie_actions i {
+.app .carousel_container .movie_info .movie_props .movie_actions i {
   color: #8f8e8e;
 }
 .app .circular_progress {
@@ -347,15 +362,15 @@ body {
   border-radius: 50%;
   background-color: #10162f;
 }
-.app .watch {
+.app .about {
   margin-left: 65px;
   min-height: 100vh;
   position: relative;
 }
-.app .watch .header_container {
+.app .about .header_container {
   height: 800px;
 }
-.app .watch #close_trailer {
+.app .about #close_trailer {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -366,7 +381,7 @@ body {
   font-size: 50px;
   cursor: pointer;
 }
-.app .watch .trailer_container {
+.app .about .trailer_container {
   position: fixed;
   top: 0;
   left: 0;
@@ -378,31 +393,29 @@ body {
   justify-content: center;
   align-items: center;
 }
-.app .watch .trailer_container .trailer {
+.app .about .trailer_container .trailer {
   width: 80%;
   aspect-ratio: 16/9;
 }
-.app .watch #go_back_btn {
+.app .about #go_back_btn {
   position: fixed;
   background-color: transparent;
-  top: 15px;
+  top: 20px;
   left: 85px;
   z-index: 3;
   font-size: 40px;
   width: 45px;
   height: 45px;
-  border-radius: 50%;
+  border-radius: 10px;
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.2s ease;
-}
-.app .watch #go_back_btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
-.app .watch .movie_infos {
+.app .about .movie_infos {
   position: absolute;
   bottom: 60px;
   width: 100%;
@@ -411,68 +424,63 @@ body {
   align-items: center;
   padding-inline: 150px;
 }
-.app .watch .movie_infos .vote_container .circular_progress {
+.app .about .movie_infos .vote_container .circular_progress {
   width: 100px;
   height: 100px;
 }
-.app .watch .movie_infos .vote_container .circular_progress span {
+.app .about .movie_infos .vote_container .circular_progress span {
   font-size: 26px;
 }
-.app .watch .movie_infos .vote_container .circular_progress:before {
+.app .about .movie_infos .vote_container .circular_progress:before {
   width: 90%;
   height: 90%;
   background-color: #10162F;
 }
-.app .watch .movie_infos .infos_text {
+.app .about .movie_infos .infos_text {
   max-width: 800px;
   padding-right: 30px;
 }
-.app .watch .movie_infos .infos_text h2 {
+.app .about .movie_infos .infos_text h2 {
   text-transform: uppercase;
   font-size: 52px;
   font-weight: 700;
   margin-bottom: 10px;
 }
-.app .watch .movie_infos .infos_text p {
+.app .about .movie_infos .infos_text p {
   font-size: 15px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
 }
-.app .watch .movie_infos .infos_text span {
+.app .about .movie_infos .infos_text .details {
   display: flex;
   margin-top: 20px;
   align-items: center;
 }
-.app .watch .movie_infos .infos_text span #slash {
+.app .about .movie_infos .infos_text .details #slash {
   height: 25px;
   background-color: rgba(255, 255, 255, 0.7);
   border: none;
   width: 2px;
   margin-right: 10px;
 }
-.app .watch .movie_infos .infos_text span span {
+.app .about .movie_infos .infos_text .details span {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 1.5px;
   font-weight: 500;
   padding: 1px 6px;
-  border: 2px solid #535bf2;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   color: rgba(255, 255, 255, 0.7);
   border-radius: 2px;
   margin: 0;
   margin-right: 5px;
   text-align: center;
 }
-.app .watch .movie_infos .infos_text span p {
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 700;
-  margin-right: 10px;
-}
-.app .watch .link_trailer_container {
+.app .about .link_trailer_container {
   width: 100%;
   text-align: center;
 }
-.app .watch .link_trailer_container button {
+.app .about .link_trailer_container button {
   width: 80%;
   height: 60px;
   background-color: transparent;
@@ -482,64 +490,64 @@ body {
   border-radius: 8px;
   transition: 0.2s ease-in;
 }
-.app .watch .link_trailer_container button div {
+.app .about .link_trailer_container button div {
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.3s ease-in;
 }
-.app .watch .link_trailer_container button i {
+.app .about .link_trailer_container button i {
   font-size: 25px;
   margin-left: 10px;
 }
-.app .watch .link_trailer_container button p, .app .watch .link_trailer_container button i {
+.app .about .link_trailer_container button p, .app .about .link_trailer_container button i {
   color: #2d37eb;
 }
-.app .watch .link_trailer_container button:hover {
+.app .about .link_trailer_container button:hover {
   cursor: pointer;
   background-color: #2d37eb;
 }
-.app .watch .link_trailer_container button:hover div i, .app .watch .link_trailer_container button:hover div p {
+.app .about .link_trailer_container button:hover div i, .app .about .link_trailer_container button:hover div p {
   color: #ededed;
 }
-.app .watch .cast_container {
+.app .about .cast_container {
   width: 85%;
   margin: 0 auto;
   margin-top: 50px;
 }
-.app .watch .cast_container h3 {
+.app .about .cast_container h3 {
   font-size: 35px;
 }
-.app .watch .cast_container .cast_actors {
+.app .about .cast_container .cast_actors {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
 }
-.app .watch .cast_container .cast_actors .actor {
+.app .about .cast_container .cast_actors .actor {
   text-align: center;
   width: 14%;
   min-width: 140px;
 }
-.app .watch .cast_container .cast_actors .actor p {
+.app .about .cast_container .cast_actors .actor p {
   font-size: 16px;
   font-weight: 900;
 }
-.app .watch .cast_container .cast_actors .actor span {
+.app .about .cast_container .cast_actors .actor span {
   font-weight: 400;
   color: rgba(184, 184, 184, 0.937254902);
   font-size: 15px;
 }
-.app .watch .cast_container .cast_actors .actor img {
+.app .about .cast_container .cast_actors .actor img {
   width: 100%;
   border-radius: 5px;
 }
-.app .watch .carousel_container {
+.app .about .carousel_container {
   margin-top: 50px;
   padding-bottom: 20px;
 }
-.app .watch .carousel_container h3 {
+.app .about .carousel_container h3 {
   font-size: 24px;
 }
 .app .movies_page {
@@ -693,7 +701,7 @@ body {
     right: 0;
     left: auto;
     padding-top: 90px;
-    transform: translateX(0%);
+    transform: translateX(0);
     width: 140px;
     transition: 0.3s ease;
   }
@@ -731,6 +739,41 @@ body {
   .app .nav_btn i {
     font-size: 40px;
   }
+  .app .home .carousel_container, .app .about .carousel_container {
+    margin-inline: 10px;
+  }
+  .app .home .carousel_container h3, .app .about .carousel_container h3 {
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 22px;
+  }
+  .app .home .carousel_container .carousel, .app .about .carousel_container .carousel {
+    margin-bottom: 50px;
+  }
+  .app .home .carousel_container .carousel .carousel_wrapper, .app .about .carousel_container .carousel .carousel_wrapper {
+    overflow-x: auto;
+  }
+  .app .home .carousel_container .carousel .carousel_controls #move_left, .app .home .carousel_container .carousel .carousel_controls #move_right, .app .about .carousel_container .carousel .carousel_controls #move_left, .app .about .carousel_container .carousel .carousel_controls #move_right {
+    display: none;
+  }
+  .app .home .carousel_container .carousel .movies, .app .about .carousel_container .carousel .movies {
+    gap: 10px;
+  }
+  .app .home .carousel_container .carousel .movies .movie, .app .about .carousel_container .carousel .movies .movie {
+    min-width: 180px;
+  }
+  .app .home .carousel_container .carousel .movies .movie .movie_link .poster, .app .about .carousel_container .carousel .movies .movie .movie_link .poster {
+    height: 270px;
+  }
+  .app .home .carousel_container .carousel .movies .movie .movie_info, .app .about .carousel_container .carousel .movies .movie .movie_info {
+    display: none;
+  }
+  .app .home .carousel_container .carousel .movies .movie .watch, .app .about .carousel_container .carousel .movies .movie .watch {
+    margin-left: 0;
+  }
+  .app .home .carousel_container .carousel .movies .movie .watch .header_movie, .app .about .carousel_container .carousel .movies .movie .watch .header_movie {
+    height: auto;
+  }
   .app .home {
     margin: 0;
     max-width: 100%;
@@ -756,7 +799,7 @@ body {
     transform: translateX(-50%);
     align-items: center;
     text-align: center;
-    max-width: none;
+    max-width: 90%;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -777,45 +820,64 @@ body {
   .app .home .header_container .header_wrapper .header_movie .header_movie_infos #slash {
     display: none;
   }
-  .app .home .carousel_container {
-    margin-inline: 10px;
+  .app .about {
+    margin: 0;
   }
-  .app .home .carousel_container h3 {
+  .app .about #go_back_btn {
+    left: 30px;
+  }
+  .app .about .header_container {
+    height: auto;
+    overflow: visible;
+  }
+  .app .about .header_container .header_wrapper {
+    height: auto;
+  }
+  .app .about .header_container .header_wrapper .header_movie {
+    min-height: 800px;
+  }
+  .app .about .header_container .header_wrapper .movie_infos {
+    width: auto;
+    height: auto;
+    bottom: -100px;
+    max-width: 80%;
+    padding: 10px 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.01);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  .app .about .header_container .header_wrapper .movie_infos .infos_text {
+    padding-right: 0px;
+  }
+  .app .about .header_container .header_wrapper .movie_infos h2 {
+    font-size: 38px;
+  }
+  .app .about .header_container .header_wrapper .movie_infos .vote_container {
+    padding-block: 8px;
+  }
+  .app .about .header_container .header_wrapper .movie_infos .vote_container .circular_progress {
+    width: 70px;
+    height: 70px;
+  }
+  .app .about .header_container .header_wrapper .movie_infos .vote_container .circular_progress span {
     font-size: 22px;
   }
-  .app .home .carousel_container .carousel, .app .watch .carousel_container .carousel {
-    margin-bottom: 95px;
-  }
-  .app .home .carousel_container .carousel .carousel_wrapper, .app .watch .carousel_container .carousel .carousel_wrapper {
-    overflow-x: auto;
-  }
-  .app .home .carousel_container .carousel .carousel_controls #move_left, .app .home .carousel_container .carousel .carousel_controls #move_right, .app .watch .carousel_container .carousel .carousel_controls #move_left, .app .watch .carousel_container .carousel .carousel_controls #move_right {
-    display: none;
-  }
-  .app .home .carousel_container .carousel .movies, .app .watch .carousel_container .carousel .movies {
-    gap: 10px;
-  }
-  .app .home .carousel_container .carousel .movies .movie, .app .watch .carousel_container .carousel .movies .movie {
-    min-width: 180px;
-  }
-  .app .home .carousel_container .carousel .movies .movie .movie_link .poster, .app .watch .carousel_container .carousel .movies .movie .movie_link .poster {
-    height: 270px;
-  }
-  .app .home .carousel_container .carousel .movies .movie .movie_info, .app .watch .carousel_container .carousel .movies .movie .movie_info {
-    display: none;
-  }
-  .app .home .carousel_container .carousel .movies .movie .watch, .app .watch .carousel_container .carousel .movies .movie .watch {
-    margin-left: 0;
-  }
-  .app .home .carousel_container .carousel .movies .movie .watch .header_movie, .app .watch .carousel_container .carousel .movies .movie .watch .header_movie {
-    height: auto;
+  .app .about .link_trailer_container {
+    margin-top: 150px;
   }
 }
 @media (max-width: 650px) {
-  .home .carousel_container .carousel .carousel_wrapper .movies .movie, .watch .carousel_container .carousel .carousel_wrapper .movies .movie {
+  .home .carousel_container .carousel .carousel_wrapper .movies .movie, .about .carousel_container .carousel .carousel_wrapper .movies .movie {
     min-width: 120px;
   }
-  .home .carousel_container .carousel .carousel_wrapper .movies .movie .movie_link .poster, .watch .carousel_container .carousel .carousel_wrapper .movies .movie .movie_link .poster {
+  .home .carousel_container .carousel .carousel_wrapper .movies .movie .movie_link .poster, .about .carousel_container .carousel .carousel_wrapper .movies .movie .movie_link .poster {
     height: 210px;
   }
 }
