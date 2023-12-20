@@ -188,26 +188,28 @@ const HomeHeader = () => {
                 <div className="header_filter1"></div>
                 <div className="header_filter2"></div>
                 <div className="header_movie_infos">
-                  <h2>{movie.original_title}</h2>
-                  <p>{movie.overview}</p>
-                  <div className='details'>
-                    <p>{movie.release_date.split('').slice(0,4)}</p>
-                    <div id='slash'></div>
-                      {movie.genre_ids.slice(0, 3).map((genre_id) => {
-                        return(
-                          genres.map((genre) => {
-                            if(genre.id === genre_id){
-                              return(
-                                <span>{genre.name}</span>
-                              )
-                            }
-                          })
-                        )
-                      })}
+                  <div className="infos_text">
+                    <h2>{movie.original_title}</h2>
+                    <p>{movie.overview}</p>
+                    <div className='details'>
+                      <p>{movie.release_date.split('').slice(0,4)}</p>
+                      <div id='slash'></div>
+                        {movie.genre_ids.slice(0, 3).map((genre_id) => {
+                          return(
+                            genres.map((genre) => {
+                              if(genre.id === genre_id){
+                                return(
+                                  <span>{genre.name}</span>
+                                )
+                              }
+                            })
+                          )
+                        })}
                     </div>
-                    <Link className='about_btn' to={`about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>ABOUT</Link>
                   </div>
+                  <Link className='about_btn' to={`about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>ABOUT</Link>
                 </div>
+              </div>
             )
           })
           :

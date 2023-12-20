@@ -111,14 +111,10 @@ const GridDisplay = (props) => {
                             <div className="movie_info">
                             <p>{movie.original_title ? movie.original_title : movie.name}</p>
                             <div className='movie_props'>
-                                <p>2018</p>
-                                <div className="movie_actions">
-                                <button><i class="bi bi-heart-fill"></i></button>
-                                <button><i class="bi bi-plus-circle-fill"></i></button>
-                                </div>
-                                <div className="circular_progress" style={{background:`conic-gradient(#535bf2 ${(movie.vote_average * 360) / 10}deg, transparent 0deg)`}}>
+                              <p>2018</p>
+                              <div className="circular_progress" style={{background:`conic-gradient(#535bf2 ${(movie.vote_average * 360) / 10}deg, transparent 0deg)`}}>
                                 <span>{Math.round(movie.vote_average * 10) / 10}</span>
-                                </div>
+                              </div>
                             </div>
                             </div>
                         </div>

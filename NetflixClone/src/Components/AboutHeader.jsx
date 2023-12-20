@@ -42,14 +42,13 @@ const AboutHeader = (props) => {
                     <>
                         <div className='header_movie'  style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${screenWidth  > 1000 ? data.backdrop_path : data.poster_path})`}}>
                             <div className="header_filter2"></div>       
-                        </div>
-                        <div className="movie_infos">
-                            <div className="infos_text">
-                                <h2>{data.original_title ? data.original_title : data.name}</h2>
-                                <p>{data.overview}</p>
-                                <div className='details'>
-                                    <p>{data.release_date ? data.release_date.split('').slice(0,4).join('') : data.first_air_date.split('').slice(0,4).join('')}</p>
-                                    <div id='slash'></div>
+                            <div className="header_movie_infos">
+                                <div className="infos_text">
+                                    <h2>{data.original_title ? data.original_title : data.name}</h2>
+                                    <p>{data.overview}</p>
+                                    <div className='details'>
+                                        <p>{data.release_date ? data.release_date.split('').slice(0,4).join('') : data.first_air_date.split('').slice(0,4).join('')}</p>
+                                        <div id='slash'></div>
                                         {data.genres.slice(0, 3).map((genre) => <span>{genre.name}</span>)}
                                     </div>
                                 </div>
@@ -59,6 +58,7 @@ const AboutHeader = (props) => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
                              
                         </>
                     :
