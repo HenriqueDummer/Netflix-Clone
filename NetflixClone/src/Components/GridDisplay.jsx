@@ -5,7 +5,6 @@ import useFetchData from "../Hooks/useFetchData"
 import LoadingSpin from "./LoadingSpin"
 
 const GridDisplay = (props) => {
-  console.log(props)
     const [genreSelected, setGenreSelected] = useState(props.isMovie ? '28' : '10759')
     const [page, setPage] = useState(1)
     const [data, setData] = useState()

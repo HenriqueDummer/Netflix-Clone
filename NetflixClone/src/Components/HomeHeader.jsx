@@ -10,7 +10,7 @@ import LoadingSpin from './LoadingSpin'
 const HomeHeader = () => {
 
     const screenWidth = useScreenWidth()
-    const {data: header_data} = useFetchData({
+    const headerData = useFetchData({
         movie: true,
         params: "Now Playing",
         number: 5
@@ -182,7 +182,7 @@ const HomeHeader = () => {
                 </label>
             </div>
           <div className="header_wrapper" style={{transform: `translateX(${headerPosition}%)`}}>
-          {header_data ? header_data.map((movie) => {
+          {headerData ? headerData.results.map((movie) => {
             return(
               <div key={movie.id} className="header_movie" style={{backgroundImage: `url(https://image.tmdb.org/t/p/original/${screenWidth  > 1000 ? movie.backdrop_path : movie.poster_path})`}}>
                 <div className="header_filter1"></div>

@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 
 const useFetchData = (props) => {
-
     const [data, setData] = useState()
-    console.log(data)
     const page = props.page ? `${props.page}` : '1'
 
-    console.log(props.page)
     const options = {
         method: 'GET',
         headers: {
@@ -66,16 +63,20 @@ const useFetchData = (props) => {
       };
       
       useEffect(() => {
+        async function fetchData(){
+          const response = await fetch(`https://api.themoviedb.org/3/${buildQuery()}`, options)
 
-        fetch(`https://api.themoviedb.org/3/${buildQuery()}`, options)
-          .then(response => response.json())
-          .then(response => setData(response.results.slice(0, props.number)))
-          .catch(err => console.error(err));
+          const data = await response.json()
+          
+          setData(data)
+        }
 
+        fetchData()
       }, [props.movie, props.params, props.page, props.search])
 
 
-      return {data}
+      return data
+      
 }
 
 export default useFetchData
