@@ -123,7 +123,7 @@ const About = () => {
           <div className="carousel_container">
             <div className="carousel">
               <h3>Resembling</h3>
-              <Carousel data = {useFetchData({movie: isMovie ? true : false, similar: true, number: 20, id:id})} moviesOnCarousel = {moviesOnCarousel}  />
+              <Carousel dataProps = {{movie: isMovie, similar: true, id: id}}/>
             </div>
           </div>
         </div> 

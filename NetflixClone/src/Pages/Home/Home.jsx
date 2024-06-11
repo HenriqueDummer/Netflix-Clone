@@ -26,9 +26,9 @@ const Home = () => {
           />
         </div>
         <div className="carousel">
-          <h3>Popular series</h3>
+          <h3>Popular Series</h3>
           <Carousel
-            dataProps={{ movie: false, params: "Top Rated" }}
+            dataProps={{ movie: false, params: "Popular" }}
           />
         </div>
         <div className="carousel">

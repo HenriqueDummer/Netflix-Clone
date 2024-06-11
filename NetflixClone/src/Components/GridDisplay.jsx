@@ -8,7 +8,7 @@ const GridDisplay = (props) => {
     const [genreSelected, setGenreSelected] = useState(props.isMovie ? '28' : '10759')
     const [page, setPage] = useState(1)
     const [data, setData] = useState()
-    const {data : response} = useFetchData({
+    const response = useFetchData({
       movie: props.isMovie,
       params: genreSelected,
       number: 20,
@@ -101,7 +101,7 @@ const GridDisplay = (props) => {
             }
             <div className="movies_container">
                 <div className="movies_grid">
-                    {data ? data.map((movie) => {
+                    {data ? data.results.map((movie) => {
                         return(
                         <div key={movie.id} className="movie">
                             <Link className='movie_link' to={`/about/${movie.first_air_date ? `s${movie.id}` : `m${movie.id}`}`}>

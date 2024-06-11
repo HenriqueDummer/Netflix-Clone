@@ -7,7 +7,6 @@ import LoadingSpin from "./LoadingSpin";
 import "react-multi-carousel/lib/styles.css";
 
 const Carousel = ({ dataProps }) => {
-  console.log(dataProps)
   const fetchedData = useFetchData(dataProps);
   const data = fetchedData?.results;
   const [carouselPosition, setCarouselPostition] = useState(0)
@@ -16,8 +15,6 @@ const Carousel = ({ dataProps }) => {
   const carouselOffset = Math.round(carouselWidth / 3);
   const maxWidth = data?.length * 250 - 30
 
-  console.log((maxWidth - carouselWidth) * -1)
-
   const moveCarouselRight = () => {
     if((carouselPosition - carouselOffset) > ((maxWidth - carouselWidth) * -1)){
       setCarouselPostition(prev => prev - carouselOffset)
@@ -25,8 +22,6 @@ const Carousel = ({ dataProps }) => {
       setCarouselPostition((maxWidth - carouselWidth) * - 1)
     }
   };
-
-  // console.log(`Position => ${carouselPosition}`)
 
   const moveCarouselLeft = (e) => {
     if((carouselPosition + carouselOffset) < 0 ){
@@ -63,6 +58,7 @@ const Carousel = ({ dataProps }) => {
         {data ? (
           data.map((movie) => {
             return (
+              // Make a separate component
               <div key={movie.id} className="movie">
                 <Link
                   className="movie_link"
