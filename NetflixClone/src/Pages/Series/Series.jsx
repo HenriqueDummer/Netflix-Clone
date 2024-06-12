@@ -74,7 +74,7 @@ const Series = () => {
   ]
 
   return (
-    <GridDisplay isMovie={false} genres={genres} />
+    <GridDisplay showFormat="tv" genres={genres} />
   )
 }
 

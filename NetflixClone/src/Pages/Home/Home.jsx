@@ -5,6 +5,7 @@ import useFetchData from "../../Hooks/useFetchData";
 
 import Carousel from "../../Components/Carousel";
 import HomeHeader from "../../Components/HomeHeader";
+import REQUEST_END_POINTS from "../../RequestEndPoints";
 
 const Home = () => {
 
@@ -16,25 +17,25 @@ const Home = () => {
         <div className="carousel">
           <h3>Discover</h3>
           <Carousel
-            dataProps = {{ movie: true, params: null}}
+            dataProps = {REQUEST_END_POINTS.movie.discover}
           />
         </div>
         <div className="carousel">
           <h3>Top Rated</h3>
           <Carousel
-            dataProps={{ movie: true, params: "Top Rated" }}
+            dataProps={REQUEST_END_POINTS.movie.topRated}
           />
         </div>
         <div className="carousel">
           <h3>Popular Series</h3>
           <Carousel
-            dataProps={{ movie: false, params: "Popular" }}
+            dataProps={REQUEST_END_POINTS.tv.popular}
           />
         </div>
         <div className="carousel">
           <h3>Now Playing</h3>
           <Carousel
-            dataProps={{ movie: true, params: "Now Playing" }}
+            dataProps={REQUEST_END_POINTS.movie.nowPlaying}
           />
         </div>
       </div>

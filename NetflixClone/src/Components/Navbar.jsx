@@ -16,7 +16,7 @@ export const Navbar = () => {
   return (
     <>
         <button onClick={() => handleClick()} className="nav_btn">
-            {navVisible ? <i class="bi bi-x-lg"></i> : <i class="bi bi-list"></i>}
+            {navVisible ? <i className="bi bi-x-lg"></i> : <i className="bi bi-list"></i>}
         </button>
         <nav className={`navbar ${navVisible ? '' : 'hidden'}`}>
             <div className="img_container">

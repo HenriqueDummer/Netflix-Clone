@@ -5,16 +5,14 @@ import { Link } from 'react-router-dom'
 import useFetchData from '../Hooks/useFetchData'
 import useScreenWidth from '../Hooks/useScreenWitdh'
 
+import REQUEST_END_POINTS from '../RequestEndPoints'
+
 import LoadingSpin from './LoadingSpin'
 
 const HomeHeader = () => {
 
     const screenWidth = useScreenWidth()
-    const headerData = useFetchData({
-        movie: true,
-        params: "Now Playing",
-        number: 5
-    })
+    const headerData = useFetchData(REQUEST_END_POINTS.movie.nowPlaying)
 
     const [headerPosition, setHeaderPosition] = useState(0)
     const [selectedOption, setSelectedOption] = useState('slide1')

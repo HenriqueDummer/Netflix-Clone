@@ -83,7 +83,7 @@ const Movies = () => {
   ]
 
   return (
-    <GridDisplay isMovie={true} genres={genres} />
+    <GridDisplay showFormat="movie" genres={genres} />
   )
 }
 

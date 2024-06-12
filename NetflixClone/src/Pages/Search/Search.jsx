@@ -8,10 +8,6 @@ const Search = () => {
     const [query, setQuery] = useState("")
     const [tempQuery, setTempQuery] = useState("")
 
-    useEffect(() => {
-
-    },[])
-
     const handleSubmit = (e) => {
         e.preventDefault()
         setQuery(tempQuery)
