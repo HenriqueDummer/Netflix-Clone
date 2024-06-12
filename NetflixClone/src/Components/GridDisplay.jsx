@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useFetchData from "../Hooks/useFetchData";
 
 import LoadingSpin from "./LoadingSpin";
-import REQUEST_END_POINTS from "../RequestEndPoints";
+import REQUEST_END_POINTS from "../data/RequestEndPoints";
 
 const GridDisplay = ({ showFormat, genres, query }) => {
   const [genreSelected, setGenreSelected] = useState(genres ? genres[0].id : "");

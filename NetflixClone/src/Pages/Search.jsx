@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-import useFetchData from '../../Hooks/useFetchData'
-import GridDisplay from '../../Components/GridDisplay'
+import useFetchData from '../Hooks/useFetchData'
+import GridDisplay from '../Components/GridDisplay'
 
 const Search = () => {
     const [query, setQuery] = useState("")

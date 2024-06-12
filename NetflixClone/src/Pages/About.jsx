@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import useFetchData from '../../Hooks/useFetchData'
+import useFetchData from '../Hooks/useFetchData'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import Carousel from '../../Components/Carousel'
-import LoadingSpin from '../../Components/LoadingSpin'
-import AboutHeader from '../../Components/AboutHeader'
+import Carousel from '../Components/Carousel'
+import LoadingSpin from '../Components/LoadingSpin'
+import AboutHeader from '../Components/AboutHeader'
 
-import REQUEST_END_POINTS from '../../RequestEndPoints'
+import REQUEST_END_POINTS from '../data/RequestEndPoints'
 
 const About = () => {
 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import useFetchData from '../Hooks/useFetchData'
 import useScreenWidth from '../Hooks/useScreenWitdh'
 
-import REQUEST_END_POINTS from '../RequestEndPoints'
+import REQUEST_END_POINTS from '../data/RequestEndPoints'
 
 import LoadingSpin from './LoadingSpin'
 

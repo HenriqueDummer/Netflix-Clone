@@ -6,7 +6,7 @@ import useScreenWidth from "../Hooks/useScreenWitdh";
 
 import LoadingSpin from "./LoadingSpin";
 import useFetchData from "../Hooks/useFetchData";
-import REQUEST_END_POINTS from "../RequestEndPoints";
+import REQUEST_END_POINTS from "../data/RequestEndPoints";
 
 const AboutHeader = ({showFormat, id}) => {
   

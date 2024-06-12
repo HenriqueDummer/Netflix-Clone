@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { Route, BrowserRouter, Routes } from 'react-router-dom'
 
 // Pages
-import Home from './Pages/Home/Home'
-import Movies from './Pages/Movies/Movies'
-import Series from './Pages/Series/Series'
-import About from './Pages/About/About'
-import Search from './Pages/Search/Search'
+import Home from './Pages/Home'
+import Movies from './Pages/Movies'
+import Series from './Pages/Series'
+import About from './Pages/About'
+import Search from './Pages/Search'
 
 // Components
 import { Navbar } from './Components/Navbar'

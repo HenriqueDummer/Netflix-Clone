@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import GridDisplay from '../../Components/GridDisplay'
+import GridDisplay from '../Components/GridDisplay'
 
 const Movies = () => {
   const genres = [

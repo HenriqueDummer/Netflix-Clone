@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import GridDisplay from '../../Components/GridDisplay'
+import GridDisplay from '../Components/GridDisplay'
 
 const Series = () => {
 
