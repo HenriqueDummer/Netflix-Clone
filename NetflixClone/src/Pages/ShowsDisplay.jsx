@@ -18,8 +18,7 @@ const ShowsDisplay = () => {
   const [filterPosition, setFilterPosition] = useState(0);
 
   const data = useFetchData(
-    REQUEST_END_POINTS[showFormat].customDiscover(page, selectedGenre ?? initialGenre),
-    selectedGenre
+    REQUEST_END_POINTS[showFormat].customDiscover(page, selectedGenre ?? initialGenre)
   );
   
   const moveRight = () => {
