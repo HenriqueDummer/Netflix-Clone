@@ -37,13 +37,13 @@ export const Navbar = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink onClick={() => setNavVisible(false)} className={`nav_link ${({isActive}) => (isActive ? 'active' : '')}`} to={'/movies'}>
+                            <NavLink onClick={() => setNavVisible(false)} className={`nav_link ${({isActive}) => (isActive ? 'active' : '')}`} to={'/shows/movie'}>
                                 <i className='bi bi-film'></i> 
                                 <p>Movies</p>
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink onClick={() => setNavVisible(false)} className={`nav_link ${({isActive}) => (isActive ? 'active' : '')}`} to={'/series'}>
+                            <NavLink onClick={() => setNavVisible(false)} className={`nav_link ${({isActive}) => (isActive ? 'active' : '')}`} to={'/shows/tv'}>
                                 <i className='bi bi-tv'></i> 
                                 <p>Series</p>
                             </NavLink>

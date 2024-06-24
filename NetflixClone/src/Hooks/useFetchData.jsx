@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetchData = (endPoint) => {
+const useFetchData = (endPoint, genre) => {
   const [data, setData] = useState();
 
   const options = {
@@ -14,17 +14,22 @@ const useFetchData = (endPoint) => {
 
   useEffect(() => {
     async function fetchData() {
+
       const response = await fetch(
         `https://api.themoviedb.org/3/${endPoint}`,
         options
       );
       const data = await response.json();
 
-      setData(data);
+      if (data) {
+        setData(data);
+      }
+
+      console.log(data)
     }
 
     fetchData();
-  }, [endPoint]);
+  }, [endPoint, genre]);
 
   return data;
 };
