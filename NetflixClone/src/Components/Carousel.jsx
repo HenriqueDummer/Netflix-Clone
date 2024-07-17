@@ -31,10 +31,6 @@ const Carousel = ({ dataProps }) => {
     }
   };
 
-  const goToTop = () => {
-    $("html, body").animate({ scrollTop: 0 }, "fast");
-  };
-
   return (
     <div className="carousel_wrapper" id="carousel_wrapper">
       <div className="carousel_controls">
@@ -62,7 +58,6 @@ const Carousel = ({ dataProps }) => {
               <div key={movie.id} className="movie">
                 <Link
                   className="movie_link"
-                  onClick={goToTop}
                   to={`/about/${
                     movie.first_air_date ? `s${movie.id}` : `m${movie.id}`
                   }`}

@@ -20,10 +20,16 @@ const About = () => {
     let trailerPath = useFetchData(REQUEST_END_POINTS[showFormat].trailer(id))
     let castData = useFetchData(REQUEST_END_POINTS[showFormat].cast(id))
 
+    const goToTop = () => {
+      window.scrollTo(0, 0)
+    };
+
     castData = castData?.cast.splice(0, 10)
     trailerPath = trailerPath?.results.find(video => video.type === "Trailer")
 
-    console.log(trailerPath)
+    useEffect(() => {
+      goToTop()
+    }, [id])
 
     const [videos, setVideos] = useState([])
 
