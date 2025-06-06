@@ -9,9 +9,10 @@ import useFetchData from "../Hooks/useFetchData";
 import REQUEST_END_POINTS from "../data/RequestEndPoints";
 
 const AboutHeader = ({showFormat, id}) => {
-  
-  const data = useFetchData(REQUEST_END_POINTS[showFormat].info(id))
+  const {data, isLoading} = useFetchData(REQUEST_END_POINTS[showFormat].info(id));
   const screenWidth = useScreenWidth();
+
+  if(isLoading) return <LoadingSpin />;
 
   return (
     <div className="header_container">
@@ -40,8 +41,8 @@ const AboutHeader = ({showFormat, id}) => {
                         : data.first_air_date.split("").slice(0, 4).join("")}
                     </p>
                     <div id="slash"></div>
-                    {data.genres.slice(0, 3).map((genre) => (
-                      <span>{genre.name}</span>
+                    {data.genres.slice(0, 3).map((genre, idx) => (
+                      <span key={idx}>{genre.name}</span>
                     ))}
                   </div>
                 </div>
