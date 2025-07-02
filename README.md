@@ -8,7 +8,7 @@ Movies Website é um aplicativo que simula uma plataforma de streaming, exibindo
 
 ![Texto alternativo](https://imgur.com/LY8UxQu.png)
 
-🔗 [Acesse o projeto online](https://netflix-clone-green.vercel.app)
+🔗 [Acesse o projeto online](https://netflix-clone-ten-fawn-52.vercel.app)
 
 ---
 
